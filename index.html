@@ -100,6 +100,16 @@ th { background-color: #f2f2f2; }
       justify-content: space-between;
       align-items: center;
   }
+
+  /* Hide Idn column on mobile */
+  td[data-label="Idn"] {
+      display: none;
+  }
+
+  /* Hide empty Costo rows on mobile */
+  td[data-label="Costo"]:empty {
+      display: none;
+  }
 }
 </style>
 </head>
