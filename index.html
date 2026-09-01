@@ -116,8 +116,12 @@ th { background-color: #f2f2f2; }
     </select>
   </label>
 
-  <label style="margin-left:15px;">Allineamento min:
+  <label style="margin-left:15px;">Allineamento >
     <input type="number" id="filterAllineamento" value="7" min="0" style="width:60px;">
+  </label>
+
+  <label style="margin-left:15px;">Qualità >
+    <input type="number" id="filterQualita" value="0" min="0" style="width:60px;">
   </label>
 
   <label style="margin-left:15px;">-/0/+:
@@ -24573,6 +24577,7 @@ la tematica di “intersezioni” (esplorazione dei confini e dell’identità, 
 function filtraEventi() {
     const tipo = document.getElementById('filterTipo').value.toLowerCase();
     const allMin = parseFloat(document.getElementById('filterAllineamento').value) || 0;
+    const qualMin = parseFloat(document.getElementById('filterQualita').value) || 0;
     const statoMin = parseFloat(document.getElementById('filterStato').value); 
     const dInizio = document.getElementById('filterDataInizio').value;
     const giorni = parseInt(document.getElementById('filterGiorni').value) || 7;
@@ -24598,6 +24603,7 @@ function filtraEventi() {
         const tdTipo = tr.cells[2].textContent.toLowerCase();
         const stato = parseFloat(tr.dataset.stato) || 0;
         const tdAll = parseFloat(tr.cells[6].textContent) || 0;
+        const tdQual = parseFloat(tr.cells[7].textContent) || 0;
         
         const evInizio = tr.dataset.inizio;
         const evFine = tr.dataset.fine;
@@ -24605,6 +24611,7 @@ function filtraEventi() {
 
         if (tipo !== 'tutti' && tdTipo !== tipo) show = false;
         if (tdAll < allMin) show = false;
+        if (tdQual < qualMin) show = false;
         if (stato < statoMin) show = false;
         if (dInizio && evFine < dInizio) show = false;
         if (dFine && evInizio > dFine) show = false;
@@ -24615,7 +24622,7 @@ function filtraEventi() {
 }
 
 document.querySelectorAll(
-  '#filterTipo, #filterAllineamento, #filterStato, #filterDataInizio, #filterGiorni, #filterCerca'
+  '#filterTipo, #filterAllineamento, #filterQualita, #filterStato, #filterDataInizio, #filterGiorni, #filterCerca'
 ).forEach(el => {
     el.addEventListener('input', filtraEventi);
     el.addEventListener('change', filtraEventi);
