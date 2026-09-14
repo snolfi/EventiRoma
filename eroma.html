@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>e-roma</title>
+<title>Guida - e-roma</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -34,6 +34,14 @@ p {
     line-height: 1.65;
     margin-bottom: 20px;
     color: #333;
+}
+p a {
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+p a:hover {
+    color: #0056b3;
 }
 strong {
     color: #111;
@@ -78,11 +86,13 @@ strong {
 </head>
 <body>
 <div class="container">
-  <h1>e-roma</h1>
-  <p><strong>e-roma</strong> ti permette di avere a portata di mano l’<strong>elenco completo degli eventi programmati a Roma</strong>.</p>
-  <p>Per permetterti di scegliere gli spettacoli, i concerti, i film e le mostre migliori in poco tempo e-roma ti mette mostra gli <strong>eventi allineati alle tue preferenze personali</strong> e ti mette a disposizione <strong>recensioni critiche e valutazioni di qualità</strong> estratte da fonti indipendenti autorevoli.</p>
-  <p>Ti presenta inoltre anche gli <strong>eventi programmati nelle le prossime settimane</strong> in modo tale da permetterti di acquistare in tempo i biglietti degli spettacoli che vanno in sold-out.</p>
-  <p><strong>Imposta le tue preferenze personali</strong> cliccando su link precedente e buon divertimento.</p>
+  <h1>Guida</h1>
+  <p><strong>e-roma</strong> ti permette di avere a portata di mano l’<strong>elenco completo degli eventi programmati a Roma</strong></p>
+  <p>ti fornisce <strong>recensioni critiche e valutazioni di qualità</strong> estratte da fonti indipendenti autorevoli (clicca sul voto di qualità per leggere la recensione e eventualmente visualizza solo gli eventi con qualità superiore ad un certo valore)</p>
+  <p>ti consente di <strong>filtrare</strong> gli eventi per tipo (spettacoli, mostre, concerti, film, festival), per periodo (modificando la data di inizio e il numero di giorni), e per qualità</p>
+  <p>ti permette di <strong>nascondere</strong> gli eventi che non ti interessano e/o che hai già visto cliccando NO</p>
+  <p>ti permette di selezionare gli <strong>eventi allineati alle tue preferenze personali</strong> indicando le tue preferenze <a href="indica-preferenze.html">qui</a> e selezionando un valore di allineamento minimo (tra 1 e 10).</p>
+  <p>Una volta scelto un evento non dimenticare di verificare i dettagli e le eventuali variazioni visitando il sito del cinema o del teatro e cliccando sul link collegato al titolo dell’evento.</p>
   <div style="margin-top: 30px;">
     <a href="index.html" onclick="if(history.length>1){history.back();return false;}else if(location.protocol==='file:'){location.href='eventi.html';return false;}" class="back-btn">← Torna agli eventi</a>
   </div>
