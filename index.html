@@ -177,7 +177,7 @@ td[data-label="NO"] {
   </label>
 
   <label style="margin-left:15px;">Allineamento >
-    <input type="number" id="filterAllineamento" value="0" step="any" style="width:60px;">
+    <input type="number" id="filterAllineamento" value="-1.0" step="0.1" style="width:65px;">
   </label>
 
   <label style="margin-left:15px;">Qualità >
@@ -187,10 +187,11 @@ td[data-label="NO"] {
   <label style="margin-left:15px;">Da:
     <input type="date" id="filterDataInizio">
   </label>
+  <button type="button" id="btnNextDay" title="Giorno successivo" style="cursor: pointer; padding: 2px 7px; font-weight: bold; margin-left: 2px; vertical-align: middle;">+</button>
 
   <!-- Mod 1: Replaced date fine field with numerical "Giorni" field -->
   <label style="margin-left:10px;">Giorni:
-    <input type="number" id="filterGiorni" value="7" min="1" style="width:60px;">
+    <input type="number" id="filterGiorni" value="1" min="1" style="width:60px;">
   </label>
 
   <label style="margin-left:15px;">Cerca:
@@ -981,7 +982,7 @@ function filtraEventi() {
     const qualMin = qualMinVal !== "" ? parseFloat(qualMinVal) : 0;
     const filterNo = document.getElementById('filterNo').checked;
     const dInizio = document.getElementById('filterDataInizio').value;
-    const giorni = parseInt(document.getElementById('filterGiorni').value) || 7;
+    const giorni = parseInt(document.getElementById('filterGiorni').value) || 1;
     const cerca = (document.getElementById('filterCerca').value || "").toLowerCase().trim();
     
     // Mod 1: Calculate dFine dynamically based on Da + (Giorni - 1)
@@ -1047,6 +1048,28 @@ document.querySelectorAll(
     el.addEventListener('input', filtraEventi);
     el.addEventListener('change', filtraEventi);
 });
+
+const btnNextDay = document.getElementById('btnNextDay');
+if (btnNextDay) {
+    btnNextDay.addEventListener('click', (e) => {
+        e.preventDefault();
+        const dateInput = document.getElementById('filterDataInizio');
+        if (!dateInput) return;
+        let curDate;
+        if (dateInput.value) {
+            const parts = dateInput.value.split('-');
+            curDate = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+        } else {
+            curDate = new Date();
+        }
+        curDate.setDate(curDate.getDate() + 1);
+        const yyyy = curDate.getFullYear();
+        const mm = String(curDate.getMonth() + 1).padStart(2, '0');
+        const dd = String(curDate.getDate()).padStart(2, '0');
+        dateInput.value = `${yyyy}-${mm}-${dd}`;
+        filtraEventi();
+    });
+}
 
 document.querySelectorAll('input[name="sortCriteria"], input[name="mobileSortCriteria"]').forEach(radio => {
     radio.addEventListener('change', function() {
