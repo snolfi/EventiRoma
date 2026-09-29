@@ -49,6 +49,23 @@ td[data-label="NO"] {
     vertical-align: middle;
 }
 
+#btnSalva {
+    margin-left: 15px;
+    cursor: pointer;
+    padding: 3px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid #0066cc;
+    background: #0066cc;
+    color: white;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+#btnSalva:hover {
+    background: #004499;
+}
+
 #popupOverlay {
     display: none;
     position: fixed;
@@ -132,6 +149,11 @@ td[data-label="NO"] {
   td[data-label="Idn"] { display: none; }
   td[data-label="Costo"]:empty { display: none; }
   td[data-label="NO"] { text-align: left; }
+  #btnSalva {
+      margin-left: 0 !important;
+      align-self: flex-start;
+      padding: 6px 14px;
+  }
   .desktop-only { display: none !important; }
 }
 </style>
@@ -176,6 +198,8 @@ td[data-label="NO"] {
   <label style="margin-left:15px;">NO:
     <input type="checkbox" id="filterNo" style="cursor: pointer; width: 18px; height: 18px; vertical-align: middle;">
   </label>
+
+  <button type="button" id="btnSalva" onclick="salvaUtenteTxt()">Salva</button>
 </div>
 
 <table>
@@ -588,7 +612,7 @@ td[data-label="NO"] {
 
 <tr data-idn="3967" data-inizio="2026-09-14" data-fine="2026-09-28" data-cerca="3967 14/09/2026 28/09/2026 mostre mixer galleria studio cico, roma   ugo angelini, franco bacci, sylvianne blum cassereau, ercole bolognesi, miriam brancia, simona capuano, mirco ciccola, giuseppe coli, gianfranco del bove, fabrizio farina, paolo ferroni, hganga, kakuscigemu, bruna manzini, barbara maresti, olimpio monticelli, ligia paez, antonio pascucci, elena pietrangeli e donatella ricci piccirilli a cura di cinzia cotellessa ed elena pietrangeli la mostra collettiva &quot;mixer&quot; presso la galleria studio cico propone una panoramica di artisti contemporanei eterogenei. sebbene rientri nell&#x27;interesse generale per l&#x27;arte contemporanea, l&#x27;evento non è focalizzato sui movimenti d&#x27;avanguardia, sul modernismo o sulle correnti di alta pertinenza (pop art, street art) preferite dall&#x27;utente. si tratta di una rassegna di ricerca artistica contemporanea di carattere indipendente, che si colloca pertanto su un livello di media pertinenza rispetto al profilo. 0 4  https://www.oggiroma.it/eventi/mostre/mixer/93348/  ">
   <td data-label="Idn">3967</td>
-  <td data-label="Data" style="background-color: #FFFF99;">Dal 14/09/26 al 28/09/26</td>
+  <td data-label="Data">Dal 14/09/26 al 28/09/26</td>
   <td data-label="Tipo">mostre</td>
   <td data-label="Titolo, Artisti"><a href="https://www.oggiroma.it/eventi/mostre/mixer/93348/" target="_blank">MIXER</a>, Ugo Angelini, Franco Bacci, Sylvianne Blum Cassereau, Ercole Bolognesi, Miriam Brancia, Simona Capuano, Mirco Ciccola, Giuseppe Coli, Gianfranco del Bove, Fabrizio Farina, Paolo Ferroni, Hganga, Kakuscigemu, Bruna Manzini, Barbara Maresti, Olimpio Monticelli, Ligia Paez, Antonio Pascucci, Elena Pietrangeli e Donatella Ricci Piccirilli a cura di Cinzia Cotellessa ed Elena Pietrangeli</td>
   <td data-label="Luogo">Galleria Studio CiCo, Roma</td>
@@ -602,7 +626,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4014" data-inizio="2026-09-14" data-fine="2026-09-28" data-cerca="4014 14/09/2026 28/09/2026 spettacoli studio su commedia molto nera sul tempo e sul denaro teatro di villa lazzaroni, roma -1  regia di andrea collavino l&#x27;evento, sebbene tratti tematiche e utilizzi un linguaggio di ricerca (teatro grottesco, indagine sulla contemporaneità, regia di andrea collavino) perfettamente in linea con le tue preferenze, si configura come una residenza artistica e un laboratorio di creazione per attori under 35. in quanto percorso formativo e laboratoriale, e non spettacolo di repertorio professionale, l&#x27;evento ricade nella regola vincolante che impone un punteggio massimo di 5. 0 5  https://culture.roma.it/appuntamento/studio-su-commedia-molto-nera-sul-tempo-e-sul-denaro/  ">
   <td data-label="Idn">4014</td>
-  <td data-label="Data" style="background-color: #FFFF99;">Dal 14/09/26 al 28/09/26</td>
+  <td data-label="Data">Dal 14/09/26 al 28/09/26</td>
   <td data-label="Tipo">spettacoli</td>
   <td data-label="Titolo, Artisti"><a href="https://culture.roma.it/appuntamento/studio-su-commedia-molto-nera-sul-tempo-e-sul-denaro/" target="_blank">STUDIO SU COMMEDIA MOLTO NERA SUL TEMPO E SUL DENARO</a>, Regia di Andrea Collavino</td>
   <td data-label="Luogo">Teatro di Villa Lazzaroni, Roma</td>
@@ -616,7 +640,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4511" data-inizio="2026-09-22" data-fine="2026-09-28" data-cerca="4511 22/09/2026 28/09/2026 mostre il gabinetto segreto dei libri rari e dei disegni in mostra casa museo wunderkammer, roma   antoine vérard, walter crane, h. j. ford, caspar scheuren, eugène viollet-le-duc, william dyce, johann christian lotsche, luigi brini, paolo paschetto l&#x27;evento propone una collezione di libri rari, illustrazioni e disegni legati principalmente al romanticismo e ai preraffaelliti. sebbene la proposta sia culturalmente ricercata, l&#x27;evento risulta fuori target rispetto alle preferenze dell&#x27;utente, che sono orientate verso l&#x27;arte moderna, le avanguardie e il contemporaneo. si tratta di una visita guidata in una casa museo focalizzata su collezionismo storico, distante dal focus principale. 0 3  https://www.oggiroma.it/eventi/mostre/il-gabinetto-segreto-dei-libri-rari-e-dei-disegni-in-mostra/93753/  ">
   <td data-label="Idn">4511</td>
-  <td data-label="Data" style="background-color: #FFFF99;">Dal 22/09/26 al 28/09/26</td>
+  <td data-label="Data">Dal 22/09/26 al 28/09/26</td>
   <td data-label="Tipo">mostre</td>
   <td data-label="Titolo, Artisti"><a href="https://www.oggiroma.it/eventi/mostre/il-gabinetto-segreto-dei-libri-rari-e-dei-disegni-in-mostra/93753/" target="_blank">Il Gabinetto Segreto dei Libri Rari e dei Disegni in mostra</a>, Antoine Vérard, Walter Crane, H. J. Ford, Caspar Scheuren, Eugène Viollet-le-Duc, William Dyce, Johann Christian Lotsche, Luigi Brini, Paolo Paschetto</td>
   <td data-label="Luogo">Casa Museo Wunderkammer, Roma</td>
@@ -630,7 +654,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4548" data-inizio="2026-09-22" data-fine="2026-09-28" data-cerca="4548 22/09/2026 28/09/2026 concerti concerto di pianoforte nelle camere delle meraviglie/wunderkammer casa museo wunderkammer, via valle corteno 75, roma   m° lo muscio l&#x27;evento propone un concerto di pianoforte e organo all&#x27;interno di una casa museo, offrendo un&#x27;esperienza intima ed originale. il repertorio spazia dalla musica classica (bach, debussy) al rock progressivo (genesis, steve hackett), rivelando un approccio crossover raffinato e una solida identità artistica. pur non trattandosi di musica d&#x27;avanguardia, la qualità esecutiva del m° lo muscio e l&#x27;unicità del formato &quot;wunderkammer&quot; lo rendono un evento di spessore, lontano dalle proposte commerciali mainstream e ben in linea con la ricerca di musica colta e contaminata. 0 6  https://www.oggiroma.it/eventi/concerti/concerto-di-pianoforte-nelle-camere-delle-meraviglie-wunderkammer/93752/  ">
   <td data-label="Idn">4548</td>
-  <td data-label="Data" style="background-color: #FFFF99;">Dal 22/09/26 al 28/09/26</td>
+  <td data-label="Data">Dal 22/09/26 al 28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.oggiroma.it/eventi/concerti/concerto-di-pianoforte-nelle-camere-delle-meraviglie-wunderkammer/93752/" target="_blank">Concerto di Pianoforte nelle Camere delle Meraviglie/Wunderkammer</a>, M° Lo Muscio</td>
   <td data-label="Luogo">Casa Museo Wunderkammer, Via Valle Corteno 75, Roma</td>
@@ -644,7 +668,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4546" data-inizio="2026-09-25" data-fine="2026-09-28" data-cerca="4546 25/09/2026 28/09/2026 concerti concerto d&#x27;organo nel giardino delle fate del quartiere coppedè villini delle fate, via dora 2, roma   m° lo muscio l&#x27;evento si configura come un&#x27;esperienza performativa multidisciplinare che combina una visita guidata con un concerto di musica classica e contaminazioni progressive (da j.s. bach a rick wakeman). la proposta del m° lo muscio, musicista di solida formazione e collaboratore di artisti di rilievo (steve hackett), presenta una qualità esecutiva elevata e un approccio crossover interessante, che si distanzia dalla musica mainstream. pur non rientrando nelle sperimentazioni d&#x27;avanguardia pura, il carattere ricercato, il contesto esclusivo e l&#x27;inclusione di repertorio rock-prog rendono l&#x27;evento coerente con la ricerca di raffinatezza artistica dell&#x27;utente. 0 6  https://www.oggiroma.it/eventi/concerti/concerto-d-organo-nel-giardino-delle-fate-del-quartiere-coppede/93760/  ">
   <td data-label="Idn">4546</td>
-  <td data-label="Data" style="background-color: #FFFF99;">Dal 25/09/26 al 28/09/26</td>
+  <td data-label="Data">Dal 25/09/26 al 28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.oggiroma.it/eventi/concerti/concerto-d-organo-nel-giardino-delle-fate-del-quartiere-coppede/93760/" target="_blank">Concerto d&#x27;organo nel Giardino delle Fate del Quartiere Coppedè</a>, M° Lo Muscio</td>
   <td data-label="Luogo">Villini delle Fate, Via Dora 2, Roma</td>
@@ -658,7 +682,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4054" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4054 28/09/2026  cinema l&#x27;enigme velazquez casa del cinema, roma   stéphane sorlat (regista), vincent lindon, ruth gabriel (voci narranti) documentario del 2025 diretto da stéphane sorlat, che esplora l&#x27;opera di velázquez attraverso una lente filosofica ed esistenziale, richiamando pensatori come michel foucault. il film è pienamente allineato con la preferenza per documentari autoriali che evitano l&#x27;approccio didascalico in favore di una riflessione profonda e simbolica sull&#x27;arte. 0 8 7 https://culture.roma.it/appuntamento/lenigme-velazquez/  il documentario &lt;b&gt;l&#x27;énigme velázquez&lt;/b&gt; di stéphane sorlat propone un&#x27;analisi profonda dell&#x27;opera di diego velázquez, interrogandosi sulla ragione per cui il maestro spagnolo, pur essendo un punto di riferimento per artisti come manet e dalí, sia spesso meno presente nella memoria collettiva. il film, arricchito dalle voci narranti di vincent lindon e ruth gabriel, si distingue per un approccio visivo che intreccia storia dell&#x27;arte, testimonianze e una riflessione estetica audace. le fonti critiche concordano nel lodare l&#x27;impianto erudito e la capacità del regista di svelare la modernità tecnica del pittore, sebbene emerga la percezione di un&#x27;opera rivolta a un pubblico già incline alla materia, data la densità dei riferimenti. i punti di forza risiedono nell&#x27;originalità del montaggio e nell&#x27;impatto visivo, mentre il limite principale potrebbe essere rappresentato dalla complessità narrativa, a tratti esigente per lo spettatore casuale. la qualità artistica complessiva è di alto profilo, consolidando la reputazione di sorlat dopo i lavori su bosch e goya. il riscontro di pubblico è stato costante, con proiezioni d&#x27;essai in contesti prestigiosi come la casa del cinema di roma, confermando l&#x27;apprezzamento degli appassionati d&#x27;arte. fonti utilizzate: &lt;ul&gt;&lt;li&gt;&lt;a href=\&quot;https://www.abusdecine.com/\&quot;&gt;abus de ciné&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=\&quot;https://www.unifrance.org/\&quot;&gt;unifrance&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=\&quot;https://www.laruchemedia.com/\&quot;&gt;la ruche média&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;">
   <td data-label="Idn">4054</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">cinema</td>
   <td data-label="Titolo, Artisti"><a href="https://culture.roma.it/appuntamento/lenigme-velazquez/" target="_blank">L&#x27;ENIGME VELAZQUEZ</a>, Stéphane Sorlat (regista), Vincent Lindon, Ruth Gabriel (voci narranti)</td>
   <td data-label="Luogo">Casa del Cinema, Roma</td>
@@ -672,7 +696,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4385" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4385 28/09/2026  cinema born on the fourth of july casa del cinema   oliver stone (regista), tom cruise, kyra sedgwick, willem dafoe, tom berenger film del 1989 diretto da oliver stone, un&#x27;opera d&#x27;autore che affronta con crudo realismo e profondità psicologica temi politici, il trauma del reduce e la revisione critica del mito americano. nonostante l&#x27;altissima coerenza tematica con le preferenze espresse, la regola tassativa sull&#x27;anno di produzione (precedente al 2000) limita il punteggio massimo assegnabile. 0 6  https://culture.roma.it/appuntamento/born-on-the-fourth-of-july-2/  ">
   <td data-label="Idn">4385</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">cinema</td>
   <td data-label="Titolo, Artisti"><a href="https://culture.roma.it/appuntamento/born-on-the-fourth-of-july-2/" target="_blank">BORN ON THE FOURTH OF JULY</a>, Oliver Stone (Regista), Tom Cruise, Kyra Sedgwick, Willem Dafoe, Tom Berenger</td>
   <td data-label="Luogo">Casa del Cinema</td>
@@ -686,7 +710,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4386" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4386 28/09/2026  cinema unicorni celio azzurro -1  michela andreozzi (regista), edoardo pesce, valentina lodovini, daniele scardini film del 2025 diretto da michela andreozzi che esplora le dinamiche familiari, le aspettative sociali e l&#x27;identità di genere nell&#x27;infanzia. l&#x27;opera si allinea perfettamente alle preferenze per i temi sociali contemporanei e la riflessione identitaria. 0 8 6 https://culture.roma.it/appuntamento/unicorni/  il film &lt;b&gt;unicorni&lt;/b&gt; (2025), diretto da michela andreozzi, racconta la storia di blu, un bambino di nove anni appassionato di vestiti femminili che desidera interpretare la sirenetta durante la recita scolastica, costringendo i genitori, lucio (edoardo pesce) ed elena (valentina lodovini), a confrontarsi con i propri pregiudizi e paure in un percorso di accettazione guidato da un gruppo di sostegno. le recensioni critiche offrono prospettive complementari: se da un lato viene lodato il coraggio della andreozzi nell&#x27;affrontare tematiche contemporanee complesse con sensibilità e delicatezza, dall&#x27;altro si riscontra un parere unanime sulla natura talvolta eccessivamente didascalica di alcune scene, dove i dialoghi sembrano voler spiegare nozioni piuttosto che lasciar fluire il racconto. i punti di forza risiedono indiscutibilmente nella recitazione, con una lodovini intensa e un pesce in una delle sue prove più vulnerabili, e nell&#x27;impatto sociale dell&#x27;opera, che riesce a intercettare bisogni educativi attuali. le debolezze emerse riguardano principalmente la struttura narrativa, che in certi passaggi appare schematica o sbilanciata verso l&#x27;esposizione teorica. complessivamente, si tratta di un&#x27;opera artistica solida, che svolge una funzione pedagogica e sociale importante pur mantenendo uno stile da commedia drammatica classica. il riscontro di pubblico è stato positivo nelle arene estive romane, come quella del celio azzurro, dove il film ha registrato interesse grazie alla sua capacità di dialogare direttamente con le famiglie. fonti utilizzate: &lt;ul&gt;&lt;li&gt;&lt;a href=\&quot;https://www.sentieriselvaggi.it/\&quot;&gt;sentieri selvaggi&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=\&quot;https://www.madmass.it/\&quot;&gt;madmass&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=\&quot;https://www.cinemalcinema.it/\&quot;&gt;cinemalcinema&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;">
   <td data-label="Idn">4386</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">cinema</td>
   <td data-label="Titolo, Artisti"><a href="https://culture.roma.it/appuntamento/unicorni/" target="_blank">UNICORNI</a>, Michela Andreozzi (regista), Edoardo Pesce, Valentina Lodovini, Daniele Scardini</td>
   <td data-label="Luogo">Celio Azzurro</td>
@@ -700,7 +724,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4415" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4415 28/09/2026  spettacoli laboratorio kids teatro fortezza est -1  alessandro di somma, eleonora turco, lisa rosamilia, adriano popolo rubbio, francesco picciotti l&#x27;evento si configura come un laboratorio teatrale rivolto esclusivamente a bambini (5-10 anni), ricadendo pertanto nella categoria delle attività didattiche e formative. ai sensi del regolamento, trattandosi di un laboratorio/workshop, l&#x27;evento è soggetto alla penalizzazione vincolante con cap massimo 5. l&#x27;iniziativa è completamente estranea agli interessi dell&#x27;utente per il teatro sperimentale, immersivo o per la stand-up comedy. 0 1  https://culture.roma.it/appuntamento/laboratorio-kids-teatro-4/  ">
   <td data-label="Idn">4415</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">spettacoli</td>
   <td data-label="Titolo, Artisti"><a href="https://culture.roma.it/appuntamento/laboratorio-kids-teatro-4/" target="_blank">LABORATORIO KIDS TEATRO</a>, Alessandro Di Somma, Eleonora Turco, Lisa Rosamilia, Adriano Popolo Rubbio, Francesco Picciotti</td>
   <td data-label="Luogo">Fortezza Est</td>
@@ -714,7 +738,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4416" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4416 28/09/2026  spettacoli laboratorio senior fortezza est -1  alessandro di somma, eleonora turco, lisa rosamilia, adriano popolo rubbio, francesco picciotti l&#x27;evento si configura come un laboratorio teatrale e un percorso di formazione per il pubblico (&quot;critica dello spettatore&quot;), ricadendo nelle attività di workshop esplicitamente penalizzate dalle linee guida. l&#x27;allineamento è pertanto limitato, non trattandosi di una performance artistica fruibile come spettatore secondo le preferenze espresse. 0 3  https://culture.roma.it/appuntamento/laboratorio-senior-4/  ">
   <td data-label="Idn">4416</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">spettacoli</td>
   <td data-label="Titolo, Artisti"><a href="https://culture.roma.it/appuntamento/laboratorio-senior-4/" target="_blank">LABORATORIO SENIOR</a>, Alessandro Di Somma, Eleonora Turco, Lisa Rosamilia, Adriano Popolo Rubbio, Francesco Picciotti</td>
   <td data-label="Luogo">Fortezza Est</td>
@@ -728,7 +752,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4476" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4476 28/09/2026  concerti three tenors - nessun dorma chiesa di san paolo entro le mura   opera in roma si tratta di un concerto di musica lirica e canzoni napoletane tradizionali, presentato da una compagnia professionale con un taglio turistico-divulgativo. pur trattandosi di esecuzioni di buona qualità tecnica, l&#x27;evento è lontano dalle preferenze espresse per la sperimentazione, il jazz, l&#x27;elettronica o la ricerca musicale d&#x27;avanguardia. non essendo un saggio o un corso, ma uno spettacolo commerciale/turistico, il voto rispecchia la mancanza di originalità e l&#x27;estraneità ai gusti dell&#x27;utente. 0 3  https://www.teatro.it/spettacoli/roma/chiesa-di-san-paolo-entro-le-mura/2026-2027/opera-in-roma-three-tenors-nessun-dorma  ">
   <td data-label="Idn">4476</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/chiesa-di-san-paolo-entro-le-mura/2026-2027/opera-in-roma-three-tenors-nessun-dorma" target="_blank">Three Tenors - Nessun Dorma</a>, Opera in Roma</td>
   <td data-label="Luogo">Chiesa di San Paolo entro le Mura</td>
@@ -742,7 +766,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4478" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4478 28/09/2026  concerti tributo a ludovico einaudi salone bernini - palazzo ripetta, roma   pianista (format candlelight) si tratta di un evento del format &quot;candlelight&quot;, ovvero un concerto tributo basato su cover eseguite da un musicista solista. nonostante l&#x27;atmosfera suggestiva, l&#x27;evento ricade pienamente nella categoria delle tribute band/cover, privo di ricerca sonora, innovazione o di una visione artistica originale, risultando quindi in netto contrasto con la ricerca di sperimentazione e avanguardia richiesta nelle preferenze. 0 2  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-tributo-a-ludovico-einaudi  ">
   <td data-label="Idn">4478</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-tributo-a-ludovico-einaudi" target="_blank">Tributo a Ludovico Einaudi</a>, Pianista (Format Candlelight)</td>
   <td data-label="Luogo">Salone Bernini - Palazzo Ripetta, Roma</td>
@@ -756,7 +780,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4479" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4479 28/09/2026  concerti coldplay vs imagine dragons palazzo ripetta, salone bernini, roma   quartetto d&#x27;archi (format candlelight) si tratta di un concerto tributo basato sul format &quot;candlelight&quot;, che ripropone brani pop mainstream di band di fama mondiale eseguiti da un ensemble d&#x27;archi. non essendoci una reale visione artistica autoriale, ricerca sonora o sperimentazione, bensì un approccio da &quot;cover band&quot; di natura puramente commerciale, l&#x27;evento non presenta alcun allineamento con le preferenze espresse. 0 1  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-coldplay-vs-imagine-dragons  ">
   <td data-label="Idn">4479</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-coldplay-vs-imagine-dragons" target="_blank">Coldplay vs Imagine Dragons</a>, Quartetto d&#x27;archi (format Candlelight)</td>
   <td data-label="Luogo">Palazzo Ripetta, Salone Bernini, Roma</td>
@@ -770,7 +794,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4480" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4480 28/09/2026  concerti le quattro stagioni di vivaldi salone bernini, palazzo ripetta   quartetto d&#x27;archi (format candlelight) l&#x27;evento proposto è un concerto &quot;candlelight&quot;, una serie di eventi di natura commerciale che punta fortemente sull&#x27;atmosfera visiva (candele) e su un repertorio di musica classica estremamente standardizzato (&quot;le quattro stagioni&quot; di vivaldi). sebbene tecnicamente ben eseguito da un quartetto d&#x27;archi, manca totalmente di quegli elementi di ricerca sonora, innovazione, improvvisazione o contaminazione tra generi che caratterizzano le tue preferenze. si tratta di un&#x27;esperienza mainstream e didascalica, priva di una visione artistica autoriale o sperimentale. 0 4  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-le-quattro-stagioni-di-vivaldi  ">
   <td data-label="Idn">4480</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-le-quattro-stagioni-di-vivaldi" target="_blank">Le quattro stagioni di Vivaldi</a>, Quartetto d&#x27;archi (format Candlelight)</td>
   <td data-label="Luogo">Salone Bernini, Palazzo Ripetta</td>
@@ -784,7 +808,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4481" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4481 28/09/2026  concerti classici di halloween salone bernini, palazzo ripetta, roma   j music classical ensemble l&#x27;evento è un concerto del format &quot;candlelight&quot;, caratterizzato da un&#x27;esibizione di un quartetto d&#x27;archi che esegue cover di colonne sonore e brani celebri a tema horror. si tratta di un prodotto di intrattenimento commerciale, ben confezionato ma privo di quella ricerca sonora, sperimentazione o visione autoriale che contraddistinguono le preferenze musicali indicate. l&#x27;evento è focalizzato sull&#x27;atmosfera scenografica piuttosto che sulla profondità artistica o sull&#x27;innovazione. 0 3  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-classici-di-halloween  ">
   <td data-label="Idn">4481</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-classici-di-halloween" target="_blank">Classici di Halloween</a>, J Music Classical Ensemble</td>
   <td data-label="Luogo">Salone Bernini, Palazzo Ripetta, Roma</td>
@@ -798,7 +822,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4482" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4482 28/09/2026  concerti ennio morricone e colonne sonore salone bernini, palazzo ripetta, roma   j music classical ensemble si tratta di un concerto tributo della serie &quot;candlelight&quot;, eseguito da un quartetto d&#x27;archi (j music classical ensemble). è un evento di natura prevalentemente commerciale e intrattenitiva, che ripropone celebri colonne sonore in un formato standardizzato e divulgativo. non presenta quella ricerca sonora, l&#x27;innovazione o la visione autoriale specifica che caratterizzano le tue preferenze, posizionandosi come un prodotto di massa ben confezionato ma privo di sperimentazione. 0 3  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-ennio-morricone-e-colonne-sonore  ">
   <td data-label="Idn">4482</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-ennio-morricone-e-colonne-sonore" target="_blank">Ennio Morricone e colonne sonore</a>, J Music Classical Ensemble</td>
   <td data-label="Luogo">Salone Bernini, Palazzo Ripetta, Roma</td>
@@ -812,7 +836,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4483" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4483 28/09/2026  concerti hans zimmer e colonne sonore salone bernini a palazzo ripetta, roma   j music classical ensemble (quartetto d&#x27;archi) si tratta di un concerto di stampo commerciale basato su un format di intrattenimento (&quot;candlelight&quot;) che propone riarrangiamenti di colonne sonore per quartetto d&#x27;archi. l&#x27;evento, pur essendo musica dal vivo, è privo di una visione artistica autoriale, di ricerca sonora o di sperimentazione, risultando un prodotto di consumo mainstream lontano dai gusti per il jazz contemporaneo, l&#x27;elettronica d&#x27;avanguardia o la musica di ricerca indicati nelle preferenze. 0 2  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-hans-zimmer-e-colonne-sonore  ">
   <td data-label="Idn">4483</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-hans-zimmer-e-colonne-sonore" target="_blank">Hans Zimmer e colonne sonore</a>, J Music Classical Ensemble (quartetto d&#x27;archi)</td>
   <td data-label="Luogo">Salone Bernini a Palazzo Ripetta, Roma</td>
@@ -826,7 +850,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4484" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4484 28/09/2026  concerti queen &amp; abba salone bernini, palazzo ripetta, roma   j music classical ensemble (quartetto d&#x27;archi) l&#x27;evento è un &quot;candlelight concert&quot;, un format di intrattenimento commerciale basato su esecuzioni tributo (cover) di brani pop iconici da parte di ensemble di musica classica (solitamente quartetti d&#x27;archi). si tratta di una proposta pensata per il grande pubblico, priva della ricerca sonora, dell&#x27;innovazione o dell&#x27;identità artistica autoriale richieste, e rientra quindi nella categoria degli eventi penalizzati (tribute/cover band). 0 2  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-queen-abba  ">
   <td data-label="Idn">4484</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-queen-abba" target="_blank">Queen &amp; ABBA</a>, J Music Classical Ensemble (quartetto d&#x27;archi)</td>
   <td data-label="Luogo">Salone Bernini, Palazzo Ripetta, Roma</td>
@@ -840,7 +864,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4485" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4485 28/09/2026  concerti nirvana, led zeppelin, metallica ed altri palazzo ripetta - salone bernini, roma   j music classical ensemble si tratta di un concerto della serie &quot;candlelight&quot;, ovvero una performance di intrattenimento in cui un ensemble classico (quartetto d&#x27;archi) ripropone successi rock iconici in versione acustica/classica. l&#x27;evento ricade nella categoria dei concerti tributo, un formato puramente commerciale e divulgativo, privo della ricerca sonora, dell&#x27;innovazione o dell&#x27;identità artistica autoriale richiesta nelle preferenze. per questo motivo, l&#x27;allineamento è molto basso. 0 2  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-nirvana-led-zeppelin-metallica-ed-altri  ">
   <td data-label="Idn">4485</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-nirvana-led-zeppelin-metallica-ed-altri" target="_blank">Nirvana, Led Zeppelin, Metallica ed altri</a>, J Music Classical Ensemble</td>
   <td data-label="Luogo">Palazzo Ripetta - Salone Bernini, Roma</td>
@@ -854,7 +878,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4486" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4486 28/09/2026  concerti tributo a fabrizio de andré palazzo ripetta - salone bernini, roma   candlelight concerts (quartetto d&#x27;archi) si tratta di un concerto &quot;candlelight&quot;, ovvero un format commerciale basato su esecuzioni di brani celebri (in questo caso di fabrizio de andré) riarrangiati per quartetto d&#x27;archi in un&#x27;atmosfera standardizzata a lume di candela. pur essendo il repertorio di de andré di alto valore poetico, l&#x27;evento si configura come una performance di cover/tributo priva di una reale visione artistica autoriale o di ricerca sonora innovativa. per questo motivo, l&#x27;allineamento è basso, rientrando nelle categorie penalizzate dalle linee guida. 0 2  https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-tributo-a-fabrizio-de-andre  ">
   <td data-label="Idn">4486</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/palazzo-ripetta-salone-bernini/2026-2027/candlelight-tributo-a-fabrizio-de-andre" target="_blank">Tributo a Fabrizio De André</a>, Candlelight Concerts (Quartetto d&#x27;archi)</td>
   <td data-label="Luogo">Palazzo Ripetta - Salone Bernini, Roma</td>
@@ -868,7 +892,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4488" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4488 28/09/2026  concerti tributo a vasco rossi teatro ghione   luigi antonacci (pianoforte) si tratta di un concerto facente parte del format &quot;candlelight&quot;, consistente in un tributo al repertorio di vasco rossi eseguito al pianoforte. trattandosi di un evento di natura puramente celebrativa e commerciale, privo di una visione artistica autoriale, di innovazione del linguaggio musicale o di ricerca sonora (requisiti fondamentali per le tue preferenze), l&#x27;evento risulta non allineato ai tuoi interessi. 0 1  https://www.teatro.it/spettacoli/roma/ghione/2026-2027/candlelight-tributo-a-vasco-rossi  ">
   <td data-label="Idn">4488</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/ghione/2026-2027/candlelight-tributo-a-vasco-rossi" target="_blank">Tributo a Vasco Rossi</a>, Luigi Antonacci (pianoforte)</td>
   <td data-label="Luogo">Teatro Ghione</td>
@@ -882,7 +906,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4491" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4491 28/09/2026  spettacoli turbopaolo - il poliziotto del formaggio sala umberto   paolo camilli (turbopaolo) lo spettacolo di paolo camilli, in arte &quot;turbopaolo&quot;, è un&#x27;esibizione di stand-up comedy che nasce dal linguaggio del web e dei social. è in linea con l&#x27;interesse per una comicità contemporanea, basata su osservazione sociale e ironia moderna. sebbene si distanzi dal teatro sperimentale radicale, si inserisce coerentemente nel solco della stand-up comedy autoriale ricercata nelle preferenze. 0 7 6 https://www.teatro.it/spettacoli/roma/sala-umberto/2026-2027/turbopaolo-il-poliziotto-del-formaggio  &lt;p&gt;&lt;b&gt;il poliziotto del formaggio&lt;/b&gt;, spettacolo portato in scena da &lt;b&gt;paolo camilli&lt;/b&gt; presso la sala umberto di roma, rappresenta un&#x27;incursione teatrale tagliente nel mondo delle nevrosi contemporanee e dell&#x27;identità digitale. attraverso il suo alter ego &quot;turbopaolo&quot;, l&#x27;artista costruisce una narrazione che fonde satira sociale e performance fisica, esplorando con ironia spregiudicata i paradossi della vita moderna. la critica sottolinea unanimemente la naturalezza con cui camilli traspone il suo linguaggio da &lt;i&gt;content creator&lt;/i&gt; sul palcoscenico, lodando la sua capacità di mantenere una connessione immediata e vivace con il pubblico. i punti di forza risiedono nella freschezza del registro espressivo e nella versatilità performativa dell&#x27;attore; tuttavia, alcune recensioni evidenziano una struttura talvolta frammentaria, tipica del passaggio dai formati brevi dei social media al teatro, che può apparire più simile a una successione di sketch che a una drammaturgia lineare. nel complesso, lo spettacolo risulta una prova solida e accattivante, capace di attrarre una platea eterogenea grazie alla brillantezza dell&#x27;interprete. fonti utilizzate: &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://www.teatro.it&quot;&gt;teatro.it&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.repubblica.it&quot;&gt;la repubblica&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.movieplayer.it&quot;&gt;movieplayer&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;">
   <td data-label="Idn">4491</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">spettacoli</td>
   <td data-label="Titolo, Artisti"><a href="https://www.teatro.it/spettacoli/roma/sala-umberto/2026-2027/turbopaolo-il-poliziotto-del-formaggio" target="_blank">Turbopaolo - Il Poliziotto del Formaggio</a>, Paolo Camilli (Turbopaolo)</td>
   <td data-label="Luogo">Sala Umberto</td>
@@ -896,7 +920,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4547" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4547 28/09/2026  concerti incantesimi a quattro mani - duokeira piano duo associazione culturale pinispettinati, via di campo barbarico, 80 - roma   duokeira piano duo si tratta di un concerto di musica classica per pianoforte a quattro mani con un repertorio tradizionale (grieg, debussy). trattandosi di esecuzione di musica classica, l&#x27;evento non presenta gli elementi di sperimentazione, jazz o avanguardia ricercati, rientrando di conseguenza nella categoria di basso allineamento secondo le linee guida fornite. il duo è professionale, ma il genere musicale è distante dalle preferenze indicate. 0 4  https://www.oggiroma.it/eventi/concerti/incantesimi-a-quattro-mani-duokeira-piano-duo/93681/  ">
   <td data-label="Idn">4547</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">concerti</td>
   <td data-label="Titolo, Artisti"><a href="https://www.oggiroma.it/eventi/concerti/incantesimi-a-quattro-mani-duokeira-piano-duo/93681/" target="_blank">Incantesimi a quattro mani - DuoKeira Piano Duo</a>, DuoKeira Piano Duo</td>
   <td data-label="Luogo">Associazione Culturale Pinispettinati, Via di Campo Barbarico, 80 - Roma</td>
@@ -910,7 +934,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4584" data-inizio="2026-09-28" data-fine="2026-09-28" data-cerca="4584 28/09/2026  festival i grandi festival 2026 | 28 settembre cinema farnese, cinema barberini, cinema mignon, cinema 4 fontane, cinema savoy 7  werner herzog, lav diaz, damilola orimogunje, giovanna giuliani, lili horvát, beppe tufarulo, gábor reisz rassegna cinematografica di alto profilo che propone una selezione curata di film d&#x27;autore, indipendenti e internazionali, includendo proiezioni di opere premiate e incontri con registi e cast. l&#x27;evento rispecchia perfettamente le preferenze per il cinema di ricerca e sociale con una chiara linea curatoriale. 0 9 7 https://culture.roma.it/appuntamento/i-grandi-festival-2026-28-settembre/  l&#x27;iniziativa &lt;b&gt;i grandi festival: da venezia a roma e nel lazio&lt;/b&gt;, giunta alla sua 31ª edizione, rappresenta un fondamentale ponte culturale tra la mostra del cinema di venezia e il pubblico della capitale. contrariamente a quanto ipotizzato, la rassegna non è organizzata dai cineasti in programma, ma da &lt;a href=\&quot;https://www.aneclazio.com/\&quot;&gt;anec lazio&lt;/a&gt; in collaborazione con &lt;a href=\&quot;https://culture.roma.it/\&quot;&gt;roma culture&lt;/a&gt; e il supporto di &lt;a href=\&quot;https://www.insidertrend.it/\&quot;&gt;insidertrend&lt;/a&gt;, portando nelle sale romane (farnese, barberini, mignon, 4 fontane, savoy) una selezione di 50 titoli presentati al lido. &lt;b&gt;sintesi delle opinioni:&lt;/b&gt; la critica plaude alla capacità di democratizzare l&#x27;accesso all&#x27;alta cinematografia, permettendo al grande pubblico di fruire di opere d&#x27;autore come quelle di werner herzog, lav diaz, damilola orimogunje, giovanna giuliani, lili horvát, beppe tufarulo e gábor reisz, sebbene alcuni lamentino la natura di &#x27;distribuzione&#x27; della rassegna rispetto a un vero festival con concorso. &lt;b&gt;punti di forza:&lt;/b&gt; eccellente selezione artistica che spazia dai premiati di orizzonti ai titoli del concorso; ottima capillarità sul territorio con una gestione logistica ben oliata nei circuiti principali. &lt;b&gt;punti di debolezza:&lt;/b&gt; la frammentazione dei titoli in troppe sale può disorientare; mancano eventi di networking strutturati per il pubblico, riducendo l&#x27;esperienza a una semplice programmazione di sala. &lt;b&gt;qualità complessiva:&lt;/b&gt; l&#x27;esperienza offre un valore culturale alto, trasformando roma in una &#x27;succursale&#x27; veneziana, ideale per chi cerca qualità ma meno per chi cerca l&#x27;atmosfera competitiva di un festival classico. &lt;b&gt;riscontro:&lt;/b&gt; ottima affluenza grazie alla varietà del programma e alla fidelizzazione tramite le card, con una buona risonanza mediatica locale.">
   <td data-label="Idn">4584</td>
-  <td data-label="Data" style="background-color: #FFFF99;">28/09/26</td>
+  <td data-label="Data">28/09/26</td>
   <td data-label="Tipo">festival</td>
   <td data-label="Titolo, Artisti"><a href="https://culture.roma.it/appuntamento/i-grandi-festival-2026-28-settembre/" target="_blank">I GRANDI FESTIVAL 2026 | 28 SETTEMBRE</a>, Werner Herzog, Lav Diaz, Damilola Orimogunje, Giovanna Giuliani, Lili Horvát, Beppe Tufarulo, Gábor Reisz</td>
   <td data-label="Luogo">Cinema Farnese, Cinema Barberini, Cinema Mignon, Cinema 4 Fontane, Cinema Savoy</td>
@@ -2520,7 +2544,7 @@ td[data-label="NO"] {
 
 <tr data-idn="3965" data-inizio="2026-09-12" data-fine="2026-10-05" data-cerca="3965 12/09/2026 05/10/2026 mostre roma &amp; roma circolo del ministero degli affari esteri, roma   claudio bissattini la mostra presenta una riflessione pittorica su roma che fonde elementi classici e contemporanei, allineandosi all&#x27;interesse per la pittura contemporanea e il dialogo tra epoche diverse. sebbene claudio bissattini non rientri nei grandi nomi delle avanguardie storiche, la sua formazione legata alla scuola di san lorenzo e il suo percorso, caratterizzato dal passaggio dall&#x27;arte concettuale alla pittura figurativa, offrono un contenuto interessante e coerente con le preferenze per l&#x27;arte contemporanea. ricerca effettuata: le informazioni sul curatore non sono risultate disponibili, i costi non sono indicati. 0 5  https://www.oggiroma.it/eventi/mostre/roma-roma/93386/  ">
   <td data-label="Idn">3965</td>
-  <td data-label="Data">Dal 12/09/26 al 05/10/26</td>
+  <td data-label="Data" style="background-color: #FFFF99;">Dal 12/09/26 al 05/10/26</td>
   <td data-label="Tipo">mostre</td>
   <td data-label="Titolo, Artisti"><a href="https://www.oggiroma.it/eventi/mostre/roma-roma/93386/" target="_blank">Roma &amp; Roma</a>, Claudio Bissattini</td>
   <td data-label="Luogo">Circolo del Ministero degli Affari Esteri, Roma</td>
@@ -2534,7 +2558,7 @@ td[data-label="NO"] {
 
 <tr data-idn="4029" data-inizio="2026-09-18" data-fine="2026-10-05" data-cerca="4029 18/09/2026 05/10/2026 festival come è profondo il mare teatro del lido, ostia e ostia antica   marco zordan, maria antonia fama, alessandro corazzi, lena guerre il progetto “come è profondo il mare” è una rassegna multidisciplinare che si allinea bene con diverse macro-aree di interesse, in particolare teatro di narrazione, valorizzazione del patrimonio storico-culturale e cinema (inteso come esplorazione del territorio). la curatela appare curata e coerente, capace di coniugare tematiche sociali (accoglienza), storia locale (ostia antica) e pratiche artistiche site-specific (passeggiate letterarie e cinematografiche), offrendo un&#x27;esperienza culturale ricca e non puramente commerciale. 0 7 7 https://www.romatoday.it/eventi/come-e-profondo-il-mare-ostia-e-ostia-antica-18-settembre-5-ottobre-2026.html  il festival &lt;b&gt;come è profondo il mare&lt;/b&gt;, in programma dal 18 settembre al 5 ottobre 2026 presso il teatro del lido e il territorio di ostia e ostia antica, si configura come una rassegna multidisciplinare ambiziosa dedicata alla riscoperta dell&#x27;identità del litorale romano. la programmazione, curata da marco zordan, maria antonia fama, alessandro corazzi e lena guerre, intreccia teatro, passeggiate narrative e sensibilizzazione ambientale, mirando a superare la narrazione di ostia come periferia critica. le opinioni emerse dalle fonti ufficiali e locali mostrano convergenza nel lodare la coerenza tematica e l&#x27;impegno civile del progetto, sottolineando un&#x27;interessante fusione tra memoria storica e contemporaneità. i punti di forza risiedono nell&#x27;accessibilità gratuita, nella chiara visione artistica che valorizza il legame con il territorio e nel coinvolgimento attivo della comunità locale. tuttavia, la distribuzione delle attività su diverse aree geografiche rappresenta una sfida logistica significativa che richiede un coordinamento impeccabile per garantire la fluidità della fruizione. complessivamente, il festival esprime un valore culturale e sociale solido, ben supportato dalle istituzioni e capace di offrire una proposta di qualità elevata. il riscontro mediatico preliminare è incoraggiante, con un&#x27;ottima copertura informativa che prelude a una partecipazione cittadina consapevole. fonti utilizzate: &lt;ul&gt;&lt;li&gt;&lt;a href=&#x27;https://www.ostiatv.it/&#x27;&gt;ostiatv&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#x27;https://www.turismoroma.it/&#x27;&gt;turismo roma&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#x27;https://www.teatriincomune.roma.it/&#x27;&gt;teatri in comune&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;">
   <td data-label="Idn">4029</td>
-  <td data-label="Data">Dal 18/09/26 al 05/10/26</td>
+  <td data-label="Data" style="background-color: #FFFF99;">Dal 18/09/26 al 05/10/26</td>
   <td data-label="Tipo">festival</td>
   <td data-label="Titolo, Artisti"><a href="https://www.romatoday.it/eventi/come-e-profondo-il-mare-ostia-e-ostia-antica-18-settembre-5-ottobre-2026.html" target="_blank">Come è profondo il mare</a>, Marco Zordan, Maria Antonia Fama, Alessandro Corazzi, Lena Guerre</td>
   <td data-label="Luogo">Teatro del Lido, Ostia e Ostia Antica</td>
@@ -8535,15 +8559,38 @@ td[data-label="NO"] {
 </div>
 
 <script>
+const INITIAL_NOSHOW = [];
+const HAS_UTENTE_TXT = false;
+const UTENTE_SIG = "";
+
+function initNoshow() {
+    try {
+        const storedSig = localStorage.getItem('NOSHOW_BUILD_SIG');
+        if (HAS_UTENTE_TXT && storedSig !== UTENTE_SIG) {
+            localStorage.setItem('NOSHOW', JSON.stringify(INITIAL_NOSHOW));
+            localStorage.setItem('NOSHOW_BUILD_SIG', UTENTE_SIG);
+        } else if (localStorage.getItem('NOSHOW') === null) {
+            localStorage.setItem('NOSHOW', JSON.stringify(INITIAL_NOSHOW));
+        }
+    } catch (e) {
+        console.error("Errore inizializzazione NOSHOW:", e);
+    }
+}
+initNoshow();
+
 function getNoshowList() {
     try {
         const raw = localStorage.getItem('NOSHOW');
-        if (!raw) return [];
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed.map(String) : [];
+        if (raw !== null) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+                return parsed.map(String);
+            }
+        }
     } catch (e) {
-        return [];
+        console.error("Errore lettura NOSHOW:", e);
     }
+    return INITIAL_NOSHOW.map(String);
 }
 
 function setNoshowList(list) {
@@ -8566,6 +8613,25 @@ function toggleNoshow(idn, isChecked) {
     }
     setNoshowList(list);
     filtraEventi();
+}
+
+function salvaUtenteTxt() {
+    const list = getNoshowList();
+    list.sort((a, b) => {
+        const na = parseInt(a, 10);
+        const nb = parseInt(b, 10);
+        if (!isNaN(na) && !isNaN(nb)) return na - nb;
+        return a.localeCompare(b);
+    });
+    const content = list.join(',');
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'utente.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
 }
 
 function filtraEventi() {
