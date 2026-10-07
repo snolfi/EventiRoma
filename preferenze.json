@@ -1,0 +1,240 @@
+{
+  "cinema": [
+    {
+      "categoria": "",
+      "polo_positivo": "D'Autore / Indipendente",
+      "polo_negativo": "Commerciale / Blockbuster",
+      "descrizione": "Grande produzione di massa e formule collaudate vs forte impronta registica e visione personale"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Commedia / Leggero / Spensierato",
+      "polo_negativo": "Drammatico / Esistenziale / Cupo",
+      "descrizione": "Tragedia, conflitti interiori e toni gravi vs ironia, satira, comicità e distensione"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Fantastico / Fantascienza / Evasione",
+      "polo_negativo": "Realismo / Sociale / Documentario",
+      "descrizione": "Storie ancorate alla realtà, vita quotidiana, inchiesta sociale o politica e cronaca vs mondi immaginari, futuri distopici/speculativi, magia, supereroi e fiabe"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Toni Delicati / Rassicuranti",
+      "polo_negativo": "Horror / Splatter / Macabro",
+      "descrizione": "Terrore visivo, violenza grafica, mostruosità, sangue, angoscia e shock sensoriale vs atmosfere prive di orrore o minacce viscerali, delicate, serene e rassicuranti"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Buoni Sentimenti / Empatia / Riconciliazione",
+      "polo_negativo": "Thriller Psicologico / Relazioni deviate e torbide",
+      "descrizione": "Paranoia, manipolazione mentale, legami tossici, perversioni, ossessioni e doppiezza morale vs calore umano, redenzione, fiducia negli altri, legami sani e ottimismo relazionale"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Contemplativo / Introspezione / Ritmo disteso",
+      "polo_negativo": "Azione / Poliziesco / Adrenalina",
+      "descrizione": "Inseguimenti, crimine, indagini serrate, sparatorie, suspense fisica e ritmi veloci vs tempi lunghi, silenzi, studio intimo dei personaggi e riflessione morale"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Sperimentale / Fuori formato / Avanguardia",
+      "polo_negativo": "Narrazione Lineare / Classica",
+      "descrizione": "Trama accessibile a ritmo classico vs montaggio audace, ritmo contemplativo, linguaggi non convenzionali"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Cinema Contemporaneo (Post-2000)",
+      "polo_negativo": "Classici del passato (Pre-2000)",
+      "descrizione": "Storia del cinema, retrospettive e capolavori del '900 vs nuove uscite e sensibilità visiva odierna"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Live Action (Attori in carne ed ossa)",
+      "polo_negativo": "Animazione",
+      "descrizione": "Disegno e computer grafica (inclusa animazione d'autore e anime) vs interpretazione attoriale dal vivo"
+    }
+  ],
+  "spettacoli": [
+    {
+      "categoria": "",
+      "polo_positivo": "Ricerca / Contemporaneo / Sperimentazione",
+      "polo_negativo": "Tradizione / Testi classici di repertorio",
+      "descrizione": "Allestimento fedele di testi classici (Goldoni, Shakespeare, Pirandello, ecc.) vs drammaturgia contemporanea, riscritture radicali e teatro d'avanguardia"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Teatro Civile / Denuncia / Satira",
+      "polo_negativo": "Intrattenimento puro / Evasione",
+      "descrizione": "Commedie brillanti d'evasione, farsa, cabaret leggero, varietà e puro svago senza pretese di critica vs teatro d'impegno civile, memoria storica, denuncia sociale e satira politica/costume tagliente (inclusa stand-up comedy corrosiva)"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Teatro Fisico / Danza contemporanea / Gesto",
+      "polo_negativo": "Teatro di Parola (Drammaturgia/Testo)",
+      "descrizione": "Centralità del testo recitato e dei dialoghi drammaturgici vs centralità del corpo, del movimento scenico, della coreografia e del linguaggio visivo"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Immersivo / Site-specific / Interattivo",
+      "polo_negativo": "Scena Frontale Tradizionale",
+      "descrizione": "Palco all'italiana convenzionale con quarta parete vs spazi non teatrali (urbani, archeologici, industriali), allestimenti itineranti e pubblico coinvolto"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Scomodo / Provocatorio / Linguaggio per adulti",
+      "polo_negativo": "Per tutti / Famiglie / Teatro ragazzi",
+      "descrizione": "Favole teatrali, musical e spettacoli corali per tutte le età vs dissacrazione, linguaggio crudo, temi forti, controversi o audaci"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Produzione Professionale di cartellone",
+      "polo_negativo": "Laboratorio / Saggio / Formativo",
+      "descrizione": "Esiti di corsi, saggi accademici e teatro amatoriale vs compagnie stabili e artisti professionisti affermati"
+    }
+  ],
+  "concerti": [
+    {
+      "categoria": "Cantautorato",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Canzone d'autore italiana e internazionale, forte valore letterario e poetico dei testi, narrazione intimista o sociale (es. tradizione dei cantautori storici e scena contemporanea d'autore, spoken word)"
+    },
+    {
+      "categoria": "Pop",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Pop melodico, pop commerciale, hit radiofoniche, dance-pop, brani da classifica e intrattenimento leggero"
+    },
+    {
+      "categoria": "Jazz",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Jazz classico, swing, bebop, jazz d'avanguardia e contemporaneo, improvvisazione libera, crossover"
+    },
+    {
+      "categoria": "Rock e Indie",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Classic rock, alternative rock, indie rock, post-punk, grunge"
+    },
+    {
+      "categoria": "Musica Classica e Lirica",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Sinfonica, musica da camera, opera lirica, musica barocca, repertorio classico e contemporaneo colto"
+    },
+    {
+      "categoria": "Musica Elettronica e Clubbing",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Ambient, techno, house, IDM, synth-wave, elettronica di ricerca, dancefloor"
+    },
+    {
+      "categoria": "Soul, Blues, Funk e R&B",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Blues acustico ed elettrico, soul classico, funk ritmico, contemporary R&B"
+    },
+    {
+      "categoria": "Rap, Hip-Hop e Trap",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Hip-hop, trap, drill, freestyle, cultura urban"
+    },
+    {
+      "categoria": "Folk e World Music",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Musiche tradizionali regionali, taranta, folk acustico, musica etnica e suoni dal mondo"
+    },
+    {
+      "categoria": "Hard Rock e Metal",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Heavy metal, hard rock, progressive metal, punk hardcore"
+    }
+  ],
+  "mostre": [
+    {
+      "categoria": "",
+      "polo_positivo": "Arte Moderna e Contemporanea",
+      "polo_negativo": "Arte Antica e Classica",
+      "descrizione": "Archeologia, civiltà antiche, Medioevo, Rinascimento e Barocco (fino al '700) vs Ottocento, Impressionismo, avanguardie del Novecento, Pop Art e arte contemporanea"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Pittura, Disegno e Grafica",
+      "polo_negativo": "Scultura e Installazioni Tridimensionali",
+      "descrizione": "Opere plastiche, marmo, bronzo, gessi e installazioni ambientali nello spazio vs opere bidimensionali su tela, carta o tavola"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Concettuale / Astratto / Arte di Pensiero",
+      "polo_negativo": "Figurativo / Perfezione Estetica Classica",
+      "descrizione": "Ritratti, paesaggi, figurazione armoniosa e virtuosismo tecnico formale vs idee, provocazione intellettuale, arte concettuale e astrazione"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Fotografia / Videoarte / Digitale / Nuove Tecnologie",
+      "polo_negativo": "Supporti Tradizionali (Tele, Affreschi, Marmi)",
+      "descrizione": "Esposizione di opere d'arte fisiche convenzionali vs fotografia contemporanea o documentaria, videoarte, installazioni multimediali, proiezioni e arte digitale (AR/VR)"
+    },
+    {
+      "categoria": "",
+      "polo_positivo": "Pop Art / Street Art / Cultura Urbana Contemporanea",
+      "polo_negativo": "Mostra Museale Filologica / Accademica",
+      "descrizione": "Percorsi curatoriali storici rigorosi, collezioni museali istituzionali e grandi maestri vs graffiti, muralismo, pop art, grafica, fumetto e contaminazioni urbane"
+    }
+  ],
+  "festival": [
+    {
+      "categoria": "Cinema",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Festival cinematografici, rassegne all'aperto, festival del documentario e del cortometraggio, anteprime e retrospettive con registi"
+    },
+    {
+      "categoria": "Teatro",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Festival teatrali e di arti performative (es. Romaeuropa, Fringe, Short Theatre), rassegne di danza, teatro di strada e circo contemporaneo"
+    },
+    {
+      "categoria": "Lettura",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Festival letterari, rassegne di poesia, fiere della piccola e media editoria (es. Più Libri Più Liberi), maratone di lettura, incontri con autori"
+    },
+    {
+      "categoria": "Divulgazione scientifica",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Festival delle scienze, notti dei ricercatori, incontri su astronomia, tecnologia, ambiente, neuroscienze, futuro e innovazione"
+    },
+    {
+      "categoria": "Sport",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Manifestazioni sportive, maratone e corse cittadine, festival di yoga, benessere, fitness all'aperto e grandi eventi sportivi"
+    },
+    {
+      "categoria": "Patrimonio Culturale",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Aperture straordinarie di monumenti, siti archeologici, palazzi storici, Giornate FAI, percorsi guidati esclusivi e visite narrate"
+    },
+    {
+      "categoria": "Città e Territorio",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Festival di rigenerazione urbana, architettura (es. Open House Roma), festival di quartiere, passeggiate e percorsi civici alla scoperta della città"
+    },
+    {
+      "categoria": "Sagre",
+      "polo_positivo": "Molto Gradito",
+      "polo_negativo": "Non Gradito",
+      "descrizione": "Feste patronali e popolari, sagre enogastronomiche tradizionali (castagna, carciofo, vino...), mercatini ed eventi di street food"
+    }
+  ]
+}

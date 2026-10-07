@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indica Preferenze - Eventi Roma</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --neg-color: #dc2626;
+            --pos-color: #16a34a;
+            --neutral-color: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-color);
+            gap: 12px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 7px 14px;
+            border-radius: 6px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #dbeafe;
+            color: var(--primary-hover);
+        }
+
+        .btn-reset {
+            background: #ffffff;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-reset:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+            border-color: #94a3b8;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            color: #15803d;
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .status-badge.visible {
+            opacity: 1;
+        }
+
+        /* Tabs */
+        .tabs-nav {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 4px;
+            scrollbar-width: thin;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tab-btn:hover {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        }
+
+        .tab-count {
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.08);
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .tab-btn.active .tab-count {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Tab Content */
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Cards list */
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .item-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Layout Grid per Desktop (> 768px): Sinistra, Centro, Destra */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr 1fr;
+            grid-template-areas: "left center right";
+            align-items: center;
+            gap: 18px;
+            width: 100%;
+        }
+
+        /* Colonna Polo Negativo (Sinistra) */
+        .pole-left {
+            grid-area: left;
+            text-align: right;
+            padding-right: 6px;
+        }
+
+        .pole-title {
+            font-size: 14px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+
+        .pole-left .pole-title {
+            color: var(--neg-color);
+        }
+
+        .pole-tag {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Colonna Centrale */
+        .center-block {
+            grid-area: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .categoria-badge {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #dbeafe;
+            padding: 4px 16px;
+            border-radius: 16px;
+            margin-bottom: 8px;
+            display: inline-block;
+            letter-spacing: 0.3px;
+            border: 1px solid #bfdbfe;
+        }
+
+        .slider-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 12px;
+        }
+
+        .pref-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .pref-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+            transition: transform 0.1s;
+        }
+
+        .pref-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        .pref-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+            transition: transform 0.1s;
+        }
+
+        .val-badge {
+            min-width: 56px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            user-select: none;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .val-badge.val-neg {
+            background: #fee2e2;
+            color: var(--neg-color);
+            border-color: #fecaca;
+        }
+
+        .val-badge.val-pos {
+            background: #dcfce7;
+            color: var(--pos-color);
+            border-color: #bbf7d0;
+        }
+
+        .val-badge.val-zero {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .quick-presets {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .preset-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #64748b;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .preset-btn:hover {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
+
+        .preset-btn.btn-active {
+            background: #e2e8f0;
+            color: #0f172a;
+            border-color: #94a3b8;
+            font-weight: 700;
+        }
+
+        .item-descrizione {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            line-height: 1.4;
+            max-width: 95%;
+        }
+
+        /* Colonna Polo Positivo (Destra) */
+        .pole-right {
+            grid-area: right;
+            text-align: left;
+            padding-left: 6px;
+        }
+
+        .pole-right .pole-title {
+            color: var(--pos-color);
+        }
+
+        /* Mobile Layout (< 768px): Due poli in riga in alto, Categoria e Cursore al centro sotto */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .item-card {
+                padding: 14px;
+            }
+
+            .card-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "left right"
+                    "center center";
+                gap: 12px;
+            }
+
+            .pole-left {
+                text-align: left;
+                padding-right: 4px;
+            }
+
+            .pole-right {
+                text-align: right;
+                padding-left: 4px;
+            }
+
+            .pole-title {
+                font-size: 13px;
+            }
+
+            .center-block {
+                width: 100%;
+            }
+
+            .item-descrizione {
+                max-width: 100%;
+                text-align: left;
+                font-size: 12px;
+                padding-top: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div>
+            <h1>Indica Preferenze</h1>
+            <p style="font-size: 13px; color: var(--text-muted);">Imposta le tue preferenze artistiche da -1 a +1 per ciascuna dimensione</p>
+        </div>
+        <div class="nav-links">
+            <span id="statusBadge" class="status-badge">✓ Salvato in locale</span>
+            <button class="btn-reset" onclick="resetCurrentTab()" title="Azzera solo la categoria visibile">Azzera questa sezione</button>
+            <button class="btn-reset" onclick="resetAll()" title="Azzera tutte le 5 categorie a 0">Azzera tutto</button>
+            <a href="eventi.html" class="nav-link">← Torna agli Eventi</a>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-nav" id="tabsNav"></div>
+
+    <!-- Tab Panels Container -->
+    <div id="tabPanels"></div>
+</div>
+
+<script>
+// Dati delle preferenze caricati dal file JSON
+const PREFERENZE_DATA = {"cinema": [{"categoria": "", "polo_positivo": "D'Autore / Indipendente", "polo_negativo": "Commerciale / Blockbuster", "descrizione": "Grande produzione di massa e formule collaudate vs forte impronta registica e visione personale"}, {"categoria": "", "polo_positivo": "Commedia / Leggero / Spensierato", "polo_negativo": "Drammatico / Esistenziale / Cupo", "descrizione": "Tragedia, conflitti interiori e toni gravi vs ironia, satira, comicità e distensione"}, {"categoria": "", "polo_positivo": "Fantastico / Fantascienza / Evasione", "polo_negativo": "Realismo / Sociale / Documentario", "descrizione": "Storie ancorate alla realtà, vita quotidiana, inchiesta sociale o politica e cronaca vs mondi immaginari, futuri distopici/speculativi, magia, supereroi e fiabe"}, {"categoria": "", "polo_positivo": "Toni Delicati / Rassicuranti", "polo_negativo": "Horror / Splatter / Macabro", "descrizione": "Terrore visivo, violenza grafica, mostruosità, sangue, angoscia e shock sensoriale vs atmosfere prive di orrore o minacce viscerali, delicate, serene e rassicuranti"}, {"categoria": "", "polo_positivo": "Buoni Sentimenti / Empatia / Riconciliazione", "polo_negativo": "Thriller Psicologico / Relazioni deviate e torbide", "descrizione": "Paranoia, manipolazione mentale, legami tossici, perversioni, ossessioni e doppiezza morale vs calore umano, redenzione, fiducia negli altri, legami sani e ottimismo relazionale"}, {"categoria": "", "polo_positivo": "Contemplativo / Introspezione / Ritmo disteso", "polo_negativo": "Azione / Poliziesco / Adrenalina", "descrizione": "Inseguimenti, crimine, indagini serrate, sparatorie, suspense fisica e ritmi veloci vs tempi lunghi, silenzi, studio intimo dei personaggi e riflessione morale"}, {"categoria": "", "polo_positivo": "Sperimentale / Fuori formato / Avanguardia", "polo_negativo": "Narrazione Lineare / Classica", "descrizione": "Trama accessibile a ritmo classico vs montaggio audace, ritmo contemplativo, linguaggi non convenzionali"}, {"categoria": "", "polo_positivo": "Cinema Contemporaneo (Post-2000)", "polo_negativo": "Classici del passato (Pre-2000)", "descrizione": "Storia del cinema, retrospettive e capolavori del '900 vs nuove uscite e sensibilità visiva odierna"}, {"categoria": "", "polo_positivo": "Live Action (Attori in carne ed ossa)", "polo_negativo": "Animazione", "descrizione": "Disegno e computer grafica (inclusa animazione d'autore e anime) vs interpretazione attoriale dal vivo"}], "spettacoli": [{"categoria": "", "polo_positivo": "Ricerca / Contemporaneo / Sperimentazione", "polo_negativo": "Tradizione / Testi classici di repertorio", "descrizione": "Allestimento fedele di testi classici (Goldoni, Shakespeare, Pirandello, ecc.) vs drammaturgia contemporanea, riscritture radicali e teatro d'avanguardia"}, {"categoria": "", "polo_positivo": "Teatro Civile / Denuncia / Satira", "polo_negativo": "Intrattenimento puro / Evasione", "descrizione": "Commedie brillanti d'evasione, farsa, cabaret leggero, varietà e puro svago senza pretese di critica vs teatro d'impegno civile, memoria storica, denuncia sociale e satira politica/costume tagliente (inclusa stand-up comedy corrosiva)"}, {"categoria": "", "polo_positivo": "Teatro Fisico / Danza contemporanea / Gesto", "polo_negativo": "Teatro di Parola (Drammaturgia/Testo)", "descrizione": "Centralità del testo recitato e dei dialoghi drammaturgici vs centralità del corpo, del movimento scenico, della coreografia e del linguaggio visivo"}, {"categoria": "", "polo_positivo": "Immersivo / Site-specific / Interattivo", "polo_negativo": "Scena Frontale Tradizionale", "descrizione": "Palco all'italiana convenzionale con quarta parete vs spazi non teatrali (urbani, archeologici, industriali), allestimenti itineranti e pubblico coinvolto"}, {"categoria": "", "polo_positivo": "Scomodo / Provocatorio / Linguaggio per adulti", "polo_negativo": "Per tutti / Famiglie / Teatro ragazzi", "descrizione": "Favole teatrali, musical e spettacoli corali per tutte le età vs dissacrazione, linguaggio crudo, temi forti, controversi o audaci"}, {"categoria": "", "polo_positivo": "Produzione Professionale di cartellone", "polo_negativo": "Laboratorio / Saggio / Formativo", "descrizione": "Esiti di corsi, saggi accademici e teatro amatoriale vs compagnie stabili e artisti professionisti affermati"}], "concerti": [{"categoria": "Cantautorato", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Canzone d'autore italiana e internazionale, forte valore letterario e poetico dei testi, narrazione intimista o sociale (es. tradizione dei cantautori storici e scena contemporanea d'autore, spoken word)"}, {"categoria": "Pop", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Pop melodico, pop commerciale, hit radiofoniche, dance-pop, brani da classifica e intrattenimento leggero"}, {"categoria": "Jazz", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Jazz classico, swing, bebop, jazz d'avanguardia e contemporaneo, improvvisazione libera, crossover"}, {"categoria": "Rock e Indie", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Classic rock, alternative rock, indie rock, post-punk, grunge"}, {"categoria": "Musica Classica e Lirica", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Sinfonica, musica da camera, opera lirica, musica barocca, repertorio classico e contemporaneo colto"}, {"categoria": "Musica Elettronica e Clubbing", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Ambient, techno, house, IDM, synth-wave, elettronica di ricerca, dancefloor"}, {"categoria": "Soul, Blues, Funk e R&B", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Blues acustico ed elettrico, soul classico, funk ritmico, contemporary R&B"}, {"categoria": "Rap, Hip-Hop e Trap", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Hip-hop, trap, drill, freestyle, cultura urban"}, {"categoria": "Folk e World Music", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Musiche tradizionali regionali, taranta, folk acustico, musica etnica e suoni dal mondo"}, {"categoria": "Hard Rock e Metal", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Heavy metal, hard rock, progressive metal, punk hardcore"}], "mostre": [{"categoria": "", "polo_positivo": "Arte Moderna e Contemporanea", "polo_negativo": "Arte Antica e Classica", "descrizione": "Archeologia, civiltà antiche, Medioevo, Rinascimento e Barocco (fino al '700) vs Ottocento, Impressionismo, avanguardie del Novecento, Pop Art e arte contemporanea"}, {"categoria": "", "polo_positivo": "Pittura, Disegno e Grafica", "polo_negativo": "Scultura e Installazioni Tridimensionali", "descrizione": "Opere plastiche, marmo, bronzo, gessi e installazioni ambientali nello spazio vs opere bidimensionali su tela, carta o tavola"}, {"categoria": "", "polo_positivo": "Concettuale / Astratto / Arte di Pensiero", "polo_negativo": "Figurativo / Perfezione Estetica Classica", "descrizione": "Ritratti, paesaggi, figurazione armoniosa e virtuosismo tecnico formale vs idee, provocazione intellettuale, arte concettuale e astrazione"}, {"categoria": "", "polo_positivo": "Fotografia / Videoarte / Digitale / Nuove Tecnologie", "polo_negativo": "Supporti Tradizionali (Tele, Affreschi, Marmi)", "descrizione": "Esposizione di opere d'arte fisiche convenzionali vs fotografia contemporanea o documentaria, videoarte, installazioni multimediali, proiezioni e arte digitale (AR/VR)"}, {"categoria": "", "polo_positivo": "Pop Art / Street Art / Cultura Urbana Contemporanea", "polo_negativo": "Mostra Museale Filologica / Accademica", "descrizione": "Percorsi curatoriali storici rigorosi, collezioni museali istituzionali e grandi maestri vs graffiti, muralismo, pop art, grafica, fumetto e contaminazioni urbane"}], "festival": [{"categoria": "Cinema", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Festival cinematografici, rassegne all'aperto, festival del documentario e del cortometraggio, anteprime e retrospettive con registi"}, {"categoria": "Teatro", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Festival teatrali e di arti performative (es. Romaeuropa, Fringe, Short Theatre), rassegne di danza, teatro di strada e circo contemporaneo"}, {"categoria": "Lettura", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Festival letterari, rassegne di poesia, fiere della piccola e media editoria (es. Più Libri Più Liberi), maratone di lettura, incontri con autori"}, {"categoria": "Divulgazione scientifica", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Festival delle scienze, notti dei ricercatori, incontri su astronomia, tecnologia, ambiente, neuroscienze, futuro e innovazione"}, {"categoria": "Sport", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Manifestazioni sportive, maratone e corse cittadine, festival di yoga, benessere, fitness all'aperto e grandi eventi sportivi"}, {"categoria": "Patrimonio Culturale", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Aperture straordinarie di monumenti, siti archeologici, palazzi storici, Giornate FAI, percorsi guidati esclusivi e visite narrate"}, {"categoria": "Città e Territorio", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Festival di rigenerazione urbana, architettura (es. Open House Roma), festival di quartiere, passeggiate e percorsi civici alla scoperta della città"}, {"categoria": "Sagre", "polo_positivo": "Molto Gradito", "polo_negativo": "Non Gradito", "descrizione": "Feste patronali e popolari, sagre enogastronomiche tradizionali (castagna, carciofo, vino...), mercatini ed eventi di street food"}]};
+
+const TIPI = ['cinema', 'spettacoli', 'concerti', 'mostre', 'festival'];
+const TAB_ICONS = {
+    cinema: '🎬',
+    spettacoli: '🎭',
+    concerti: '🎵',
+    mostre: '🏛️',
+    festival: '🎪'
+};
+
+let currentTab = 'cinema';
+
+// Inizializza le 5 variabili di localStorage se non definite
+function initLocalStorage() {
+    TIPI.forEach(tipo => {
+        const count = PREFERENZE_DATA[tipo] ? PREFERENZE_DATA[tipo].length : 0;
+        const saved = localStorage.getItem(tipo);
+        if (!saved) {
+            const zeros = new Array(count).fill(0);
+            localStorage.setItem(tipo, JSON.stringify(zeros));
+        } else {
+            try {
+                const parsed = JSON.parse(saved);
+                if (!Array.isArray(parsed) || parsed.length !== count) {
+                    const zeros = new Array(count).fill(0);
+                    localStorage.setItem(tipo, JSON.stringify(zeros));
+                }
+            } catch(e) {
+                const zeros = new Array(count).fill(0);
+                localStorage.setItem(tipo, JSON.stringify(zeros));
+            }
+        }
+    });
+}
+
+// Leggi array valori per un tipo
+function getValues(tipo) {
+    try {
+        const raw = localStorage.getItem(tipo);
+        if (raw) {
+            const arr = JSON.parse(raw);
+            if (Array.isArray(arr) && arr.length === PREFERENZE_DATA[tipo].length) {
+                return arr.map(v => typeof v === 'number' ? v : (parseFloat(v) || 0));
+            }
+        }
+    } catch (e) {
+        console.error('Errore lettura ' + tipo, e);
+    }
+    return new Array(PREFERENZE_DATA[tipo].length).fill(0);
+}
+
+// Salva singolo valore in localStorage
+function updateValue(tipo, index, val) {
+    const num = Math.round(parseFloat(val) * 100) / 100;
+    const values = getValues(tipo);
+    values[index] = num;
+    localStorage.setItem(tipo, JSON.stringify(values));
+    
+    // Aggiorna badge e slider visualmente
+    updateBadge(tipo, index, num);
+    showStatus();
+}
+
+// Aggiorna grafica del badge e slider
+function updateBadge(tipo, index, val) {
+    const badge = document.getElementById(`badge_${tipo}_${index}`);
+    const slider = document.getElementById(`slider_${tipo}_${index}`);
+    if (slider && Math.abs(parseFloat(slider.value) - val) > 0.005) {
+        slider.value = val;
+    }
+
+    if (badge) {
+        if (Math.abs(val) < 0.005) {
+            badge.textContent = '0';
+            badge.className = 'val-badge val-zero';
+        } else if (val < 0) {
+            badge.textContent = val.toFixed(2);
+            badge.className = 'val-badge val-neg';
+        } else {
+            badge.textContent = '+' + val.toFixed(2);
+            badge.className = 'val-badge val-pos';
+        }
+    }
+
+    // Aggiorna evidenziazione pulsanti preset
+    [-1, 0, 1].forEach(preset => {
+        const btn = document.getElementById(`btn_${tipo}_${index}_${preset}`);
+        if (btn) {
+            if (Math.abs(val - preset) < 0.02) {
+                btn.classList.add('btn-active');
+            } else {
+                btn.classList.remove('btn-active');
+            }
+        }
+    });
+}
+
+// Feedback visivo salvataggio
+let statusTimeout = null;
+function showStatus() {
+    const badge = document.getElementById('statusBadge');
+    if (!badge) return;
+    badge.classList.add('visible');
+    if (statusTimeout) clearTimeout(statusTimeout);
+    statusTimeout = setTimeout(() => {
+        badge.classList.remove('visible');
+    }, 1200);
+}
+
+// Reset singola scheda visibile
+function resetCurrentTab() {
+    if (!confirm(`Vuoi azzerare a 0 tutte le preferenze di '${currentTab}'?`)) return;
+    const count = PREFERENZE_DATA[currentTab].length;
+    const zeros = new Array(count).fill(0);
+    localStorage.setItem(currentTab, JSON.stringify(zeros));
+    for (let i = 0; i < count; i++) {
+        updateBadge(currentTab, i, 0);
+    }
+    showStatus();
+}
+
+// Reset tutto
+function resetAll() {
+    if (!confirm('Vuoi azzerare a 0 TUTTE le preferenze per tutte le 5 categorie?')) return;
+    TIPI.forEach(tipo => {
+        const count = PREFERENZE_DATA[tipo].length;
+        const zeros = new Array(count).fill(0);
+        localStorage.setItem(tipo, JSON.stringify(zeros));
+        if (tipo === currentTab) {
+            for (let i = 0; i < count; i++) {
+                updateBadge(tipo, i, 0);
+            }
+        }
+    });
+    showStatus();
+}
+
+// Render tabs e pannelli
+function renderApp() {
+    const nav = document.getElementById('tabsNav');
+    const container = document.getElementById('tabPanels');
+    nav.innerHTML = '';
+    container.innerHTML = '';
+
+    TIPI.forEach(tipo => {
+        const items = PREFERENZE_DATA[tipo] || [];
+        const isActive = (tipo === currentTab);
+
+        // Tab button
+        const btn = document.createElement('button');
+        btn.className = `tab-btn ${isActive ? 'active' : ''}`;
+        btn.id = `tab_btn_${tipo}`;
+        btn.innerHTML = `${TAB_ICONS[tipo] || '📌'} ${tipo.charAt(0).toUpperCase() + tipo.slice(1)} <span class="tab-count">${items.length}</span>`;
+        btn.onclick = () => switchTab(tipo);
+        nav.appendChild(btn);
+
+        // Tab panel
+        const panel = document.createElement('div');
+        panel.className = `tab-panel ${isActive ? 'active' : ''}`;
+        panel.id = `panel_${tipo}`;
+
+        let panelHtml = `
+            <div class="section-header">
+                <div class="section-title">${TAB_ICONS[tipo] || ''} Preferenze per ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}</div>
+                <div class="section-subtitle">${items.length} dimensioni</div>
+            </div>
+        `;
+
+        const values = getValues(tipo);
+
+        items.forEach((item, idx) => {
+            const currentVal = values[idx] !== undefined ? values[idx] : 0;
+            const hasCat = Boolean(item.categoria && item.categoria.trim() !== '');
+
+            panelHtml += `
+            <div class="item-card">
+                <div class="card-grid">
+                    <!-- Polo Negativo (Sinistra) -->
+                    <div class="pole-left">
+                        <span class="pole-title">${escapeHtml(item.polo_negativo)}</span>
+                        <span class="pole-tag">[-1]</span>
+                    </div>
+
+                    <!-- Blocco Centrale: Categoria (se presente), Cursore, Valore, Presets, Descrizione -->
+                    <div class="center-block">
+                        ${hasCat ? `<span class="categoria-badge">${escapeHtml(item.categoria)}</span>` : ''}
+                        
+                        <div class="slider-row">
+                            <input type="range" 
+                                   class="pref-slider" 
+                                   id="slider_${tipo}_${idx}" 
+                                   min="-1" 
+                                   max="1" 
+                                   step="any" 
+                                   value="${currentVal}"
+                                   oninput="updateValue('${tipo}', ${idx}, this.value)">
+                            <span class="val-badge" id="badge_${tipo}_${idx}">${Math.abs(currentVal) < 0.005 ? '0' : (currentVal > 0 ? '+' : '') + currentVal.toFixed(2)}</span>
+                        </div>
+
+                        <div class="quick-presets">
+                            <button type="button" class="preset-btn" id="btn_${tipo}_${idx}_-1" onclick="updateValue('${tipo}', ${idx}, -1)">-1</button>
+                            <button type="button" class="preset-btn" id="btn_${tipo}_${idx}_0" onclick="updateValue('${tipo}', ${idx}, 0)">0</button>
+                            <button type="button" class="preset-btn" id="btn_${tipo}_${idx}_1" onclick="updateValue('${tipo}', ${idx}, 1)">+1</button>
+                        </div>
+
+                        <div class="item-descrizione">${escapeHtml(item.descrizione)}</div>
+                    </div>
+
+                    <!-- Polo Positivo (Destra) -->
+                    <div class="pole-right">
+                        <span class="pole-title">${escapeHtml(item.polo_positivo)}</span>
+                        <span class="pole-tag">[+1]</span>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+
+        panel.innerHTML = panelHtml;
+        container.appendChild(panel);
+    });
+
+    // Aggiorna tutti i badge iniziali
+    TIPI.forEach(tipo => {
+        const vals = getValues(tipo);
+        vals.forEach((v, idx) => updateBadge(tipo, idx, v));
+    });
+}
+
+function switchTab(tipo) {
+    currentTab = tipo;
+    TIPI.forEach(t => {
+        const btn = document.getElementById(`tab_btn_${t}`);
+        const panel = document.getElementById(`panel_${t}`);
+        if (btn) btn.classList.toggle('active', t === tipo);
+        if (panel) panel.classList.toggle('active', t === tipo);
+    });
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+// Avvio applicazione
+initLocalStorage();
+renderApp();
+</script>
+
+</body>
+</html>
