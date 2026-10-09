@@ -89,6 +89,22 @@ td[data-label="NO"] {
     width: 50px;
 }
 
+.filter-scores-row {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+.filter-scores-row label {
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.filter-scores-row label:last-child {
+    margin-right: 0;
+}
+
 #popupOverlay {
     display: none;
     position: fixed;
@@ -261,14 +277,38 @@ td[data-label="NO"] {
       padding: 2px;
   }
 
+  /* Allineamento > e Qualità > posti su un'unica riga */
+  .filter-scores-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-left: 0 !important;
+  }
+
+  .filter-scores-row label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      white-space: nowrap;
+      font-size: 14px;
+  }
+
+  .filter-scores-row input {
+      width: 50px !important;
+  }
+
   /* Mobile Record: Allineamento e Qualità sulla stessa riga */
   td[data-label="Allineamento"] {
       width: 50%;
       order: 15;
-      padding-left: 95px;
+      padding-left: 115px;
   }
   td[data-label="Allineamento"]:before {
-      width: 85px;
+      width: 105px;
   }
 
   td[data-label="Qualità"] {
@@ -321,6 +361,7 @@ td[data-label="NO"] {
       <input type="checkbox" id="filterNo" class="no-checkbox" style="width: 18px; height: 18px; vertical-align: middle;">
     </label>
     <button type="button" id="btnSalvaPreferenze" title="Salva preferenze e liste SI/NO su preferenze.txt" style="cursor: pointer; padding: 4px 10px; font-weight: bold; border-radius: 4px; border: 1px solid #94a3b8; background-color: #f1f5f9; color: #1e293b; vertical-align: middle;">Salva</button>
+    <button type="button" id="btnOrdinaSuggeriti" class="desktop-only" title="Ordina per suggeriti (allineamento + qualità normalizzati)" style="margin-left: 8px; cursor: pointer; padding: 4px 10px; font-weight: bold; border-radius: 4px; border: 1px solid #94a3b8; background-color: #f1f5f9; color: #1e293b; vertical-align: middle;">Suggeriti</button>
   </div>
 
   <label>Tipo:
@@ -332,14 +373,6 @@ td[data-label="NO"] {
       <option value="cinema">Cinema</option>
       <option value="festival">Festival</option>
     </select>
-  </label>
-
-  <label style="margin-left:15px;">Allineamento >
-    <input type="number" id="filterAllineamento" value="-1.0" step="0.1" style="width:65px;">
-  </label>
-
-  <label style="margin-left:15px;">Qualità >
-    <input type="number" id="filterQualita" value="0" min="0" style="width:60px;">
   </label>
 
   <div class="filter-date-row">
@@ -355,20 +388,30 @@ td[data-label="NO"] {
   <label style="margin-left:15px;">Cerca:
     <input type="text" id="filterCerca" placeholder="Cerca in tutti i campi..." style="width:140px;">
   </label>
+
+  <div class="filter-scores-row">
+    <label>Allineamento &gt;
+      <input type="number" id="filterAllineamento" value="-1.0" step="0.1" style="width:65px;">
+    </label>
+    <label>Qualità &gt;
+      <input type="number" id="filterQualita" value="0" min="0" style="width:60px;">
+    </label>
+  </div>
+
+  <div class="mobile-sort-container" style="display: none; margin-top: 5px; margin-bottom: 5px; font-size: 14px;">
+    <strong>Ordina per:</strong>
+    <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="suggeriti" class="sort-flag"> Suggeriti</label>
+    <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="allineamento" checked class="sort-flag"> Allineamento</label>
+    <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="qualita" class="sort-flag"> Qualità</label>
+    <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="data" class="sort-flag"> Data</label>
+    <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="costo" class="sort-flag"> Costo</label>
+  </div>
 </div>
 
 <noscript><style>#loadingAllineamento { display: none !important; } #eventiTable { display: table !important; }</style></noscript>
 
 <div id="loadingAllineamento" style="text-align: center; padding: 30px; font-size: 18px; font-weight: 600; color: #334155;">
   calcolo valori di allineamento in corso
-</div>
-
-<div class="mobile-sort-container" style="display: none; margin-bottom: 12px; font-size: 14px;">
-  <strong>Ordina per:</strong>
-  <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="allineamento" checked class="sort-flag"> Allineamento</label>
-  <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="qualita" class="sort-flag"> Qualità</label>
-  <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="data" class="sort-flag"> Data</label>
-  <label style="margin-left: 8px; cursor: pointer;"><input type="radio" name="mobileSortCriteria" value="costo" class="sort-flag"> Costo</label>
 </div>
 
 <table id="eventiTable" style="display: none;">
@@ -8404,30 +8447,119 @@ function calcolaAllineamenti() {
     });
 }
 
+function calcolaSuggeriti() {
+    const rows = document.querySelectorAll('tbody tr');
+    const statsPerTipo = {};
+
+    rows.forEach(tr => {
+        const tipo = (tr.dataset.tipo || '').toLowerCase().trim();
+        const all = parseFloat(tr.dataset.allineamento) || 0;
+        const qual = parseFloat(tr.dataset.qualita) || 0;
+
+        if (!statsPerTipo[tipo]) {
+            statsPerTipo[tipo] = {
+                minAll: all,
+                maxAll: all,
+                minQual: qual,
+                maxQual: qual
+            };
+        } else {
+            const s = statsPerTipo[tipo];
+            if (all < s.minAll) s.minAll = all;
+            if (all > s.maxAll) s.maxAll = all;
+            if (qual < s.minQual) s.minQual = qual;
+            if (qual > s.maxQual) s.maxQual = qual;
+        }
+    });
+
+    rows.forEach(tr => {
+        const tipo = (tr.dataset.tipo || '').toLowerCase().trim();
+        const all = parseFloat(tr.dataset.allineamento) || 0;
+        const qual = parseFloat(tr.dataset.qualita) || 0;
+        const s = statsPerTipo[tipo];
+
+        let normAll = 0.5;
+        if (s && s.maxAll > s.minAll) {
+            normAll = 0.5 * ((all - s.minAll) / (s.maxAll - s.minAll));
+        } else if (s && s.maxAll === s.minAll && s.maxAll <= 0) {
+            normAll = 0.0;
+        }
+
+        let normQual = 0.5;
+        if (s && s.maxQual > s.minQual) {
+            normQual = 0.5 * ((qual - s.minQual) / (s.maxQual - s.minQual));
+        } else if (s && s.maxQual === s.minQual && s.maxQual <= 0) {
+            normQual = 0.0;
+        }
+
+        const scoreSuggerito = Math.round((normAll + normQual) * 10000) / 10000;
+        tr.dataset.suggerito = String(scoreSuggerito);
+    });
+}
+
+let currentSortCriterion = 'allineamento';
+
 function getCriterioOrdinamento() {
     const checked = document.querySelector('input[name="sortCriteria"]:checked') ||
                     document.querySelector('input[name="mobileSortCriteria"]:checked');
-    return checked ? checked.value : 'allineamento';
+    if (checked) return checked.value;
+    return currentSortCriterion || 'allineamento';
 }
 
 function syncSortRadios(val) {
     document.querySelectorAll('input[name="sortCriteria"], input[name="mobileSortCriteria"]').forEach(r => {
         r.checked = (r.value === val);
     });
+    const btnSuggeriti = document.getElementById('btnOrdinaSuggeriti');
+    if (btnSuggeriti) {
+        if (val === 'suggeriti') {
+            btnSuggeriti.style.backgroundColor = '#2563eb';
+            btnSuggeriti.style.color = '#ffffff';
+            btnSuggeriti.style.borderColor = '#1d4ed8';
+        } else {
+            btnSuggeriti.style.backgroundColor = '#f1f5f9';
+            btnSuggeriti.style.color = '#1e293b';
+            btnSuggeriti.style.borderColor = '#94a3b8';
+        }
+    }
 }
 
 function ordinaEventi(criterio) {
     if (!criterio) {
         criterio = getCriterioOrdinamento();
     }
+    currentSortCriterion = criterio;
     syncSortRadios(criterio);
+
+    if (criterio === 'suggeriti') {
+        calcolaSuggeriti();
+    }
 
     const tbody = document.querySelector('tbody');
     if (!tbody) return;
     const rows = Array.from(tbody.querySelectorAll('tr'));
 
     rows.sort((a, b) => {
-        if (criterio === 'allineamento') {
+        if (criterio === 'suggeriti') {
+            const sugA = parseFloat(a.dataset.suggerito) || 0;
+            const sugB = parseFloat(b.dataset.suggerito) || 0;
+            if (sugB !== sugA) {
+                return sugB - sugA;
+            }
+            const allA = parseFloat(a.dataset.allineamento) || 0;
+            const allB = parseFloat(b.dataset.allineamento) || 0;
+            if (allB !== allA) {
+                return allB - allA;
+            }
+            const qualA = parseFloat(a.dataset.qualita) || 0;
+            const qualB = parseFloat(b.dataset.qualita) || 0;
+            if (qualB !== qualA) {
+                return qualB - qualA;
+            }
+            const idxA = parseInt(a.dataset.initialIndex) || 0;
+            const idxB = parseInt(b.dataset.initialIndex) || 0;
+            return idxA - idxB;
+        } else if (criterio === 'allineamento') {
             const allA = parseFloat(a.dataset.allineamento) || 0;
             const allB = parseFloat(b.dataset.allineamento) || 0;
             if (allB !== allA) {
@@ -8626,6 +8758,13 @@ document.querySelectorAll('input[name="sortCriteria"], input[name="mobileSortCri
         }
     });
 });
+
+const btnSuggeriti = document.getElementById('btnOrdinaSuggeriti');
+if (btnSuggeriti) {
+    btnSuggeriti.addEventListener('click', () => {
+        ordinaEventi('suggeriti');
+    });
+}
 
 document.querySelector('tbody').addEventListener('change', (e) => {
     if (e.target && e.target.classList.contains('no-checkbox')) {
