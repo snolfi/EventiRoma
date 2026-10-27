@@ -97,20 +97,20 @@ td[data-label="SI-NI-NO"] {
     width: 50px;
 }
 
-.filter-scores-row {
+.filter-si-ni-no-row {
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
     margin-left: 15px;
+    gap: 12px;
 }
 
-.filter-scores-row label {
-    margin-right: 15px;
+.filter-si-ni-no-row label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
     vertical-align: middle;
-}
-
-.filter-scores-row label:last-child {
-    margin-right: 0;
 }
 
 #popupOverlay {
@@ -285,28 +285,26 @@ td[data-label="SI-NI-NO"] {
       padding: 2px;
   }
 
-  /* Allineamento > e Qualità > posti su un'unica riga */
-  .filter-scores-row {
+  /* I filtri SI-NI, SI e NO posti sulla stessa riga */
+  .filter-si-ni-no-row {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 15px;
       width: 100%;
       margin-left: 0 !important;
   }
 
-  .filter-scores-row label {
-      display: flex;
+  .filter-si-ni-no-row label {
+      display: inline-flex;
       align-items: center;
       gap: 4px;
       margin-left: 0 !important;
       margin-right: 0 !important;
       white-space: nowrap;
       font-size: 14px;
-  }
-
-  .filter-scores-row input {
-      width: 50px !important;
+      cursor: pointer;
   }
 
   /* Mobile Record: Allineamento e Qualità sulla stessa riga */
@@ -356,12 +354,6 @@ td[data-label="SI-NI-NO"] {
 <div class="filters-bar" style="margin-bottom:15px;">
   <div class="header-actions-row">
     <a href="eroma.html" class="eroma-link">guida</a>
-    <label style="cursor: pointer;">SI:
-      <input type="checkbox" id="filterSi" class="si-checkbox" style="width: 18px; height: 18px; vertical-align: middle;">
-    </label>
-    <label style="cursor: pointer;">NO:
-      <input type="checkbox" id="filterNo" class="no-checkbox" style="width: 18px; height: 18px; vertical-align: middle;">
-    </label>
     <button type="button" id="btnSalvaPreferenze" title="Salva preferenze e liste SI/NI/NO su preferenze.txt" style="cursor: pointer; padding: 4px 10px; font-weight: bold; border-radius: 4px; border: 1px solid #94a3b8; background-color: #f1f5f9; color: #1e293b; vertical-align: middle;">Salva</button>
     <button type="button" id="btnOrdinaSuggeriti" class="desktop-only" title="Ordina per suggeriti (allineamento + qualità normalizzati)" style="margin-left: 8px; cursor: pointer; padding: 4px 10px; font-weight: bold; border-radius: 4px; border: 1px solid #94a3b8; background-color: #f1f5f9; color: #1e293b; vertical-align: middle;">Suggeriti</button>
   </div>
@@ -391,12 +383,15 @@ td[data-label="SI-NI-NO"] {
     <input type="text" id="filterCerca" placeholder="Cerca in tutti i campi..." style="width:140px;">
   </label>
 
-  <div class="filter-scores-row">
-    <label>Allineamento &gt;
-      <input type="number" id="filterAllineamento" value="-1.0" step="0.1" style="width:65px;">
+  <div class="filter-si-ni-no-row">
+    <label style="cursor: pointer;">SI-NI:
+      <input type="radio" name="filterPref" id="filterSiNi" value="si-ni" checked style="width: 18px; height: 18px; vertical-align: middle;">
     </label>
-    <label>Qualità &gt;
-      <input type="number" id="filterQualita" value="0" min="0" style="width:60px;">
+    <label style="cursor: pointer;">SI:
+      <input type="radio" name="filterPref" id="filterSi" value="si" style="width: 18px; height: 18px; vertical-align: middle;">
+    </label>
+    <label style="cursor: pointer;">NO:
+      <input type="radio" name="filterPref" id="filterNo" value="no" style="width: 18px; height: 18px; vertical-align: middle;">
     </label>
   </div>
 
@@ -25840,12 +25835,9 @@ function eseguiCalcoloEVisualizza() {
 
 function filtraEventi() {
     const tipo = document.getElementById('filterTipo').value.toLowerCase();
-    const allMinVal = (document.getElementById('filterAllineamento').value || '').replace(',', '.').trim();
-    const allMin = allMinVal !== "" ? parseFloat(allMinVal) : -999;
-    const qualMinVal = (document.getElementById('filterQualita').value || '').replace(',', '.').trim();
-    const qualMin = qualMinVal !== "" ? parseFloat(qualMinVal) : 0;
     const filterSi = document.getElementById('filterSi') ? document.getElementById('filterSi').checked : false;
     const filterNo = document.getElementById('filterNo') ? document.getElementById('filterNo').checked : false;
+    const filterSiNi = document.getElementById('filterSiNi') ? document.getElementById('filterSiNi').checked : true;
     const dInizio = document.getElementById('filterDataInizio').value;
     const giorni = parseInt(document.getElementById('filterGiorni').value) || 1;
     const cerca = (document.getElementById('filterCerca').value || "").toLowerCase().trim();
@@ -25899,12 +25891,6 @@ function filtraEventi() {
 
         const tdTipoEl = tr.querySelector('td[data-label="Tipo"]');
         const tdTipo = tdTipoEl ? tdTipoEl.textContent.toLowerCase() : '';
-        const tdAllEl = tr.querySelector('td[data-label="Allineamento"]');
-        const tdAllText = tdAllEl ? (tdAllEl.textContent || '').replace(',', '.').trim() : '';
-        const tdAll = tdAllText !== '' ? (parseFloat(tdAllText) || 0) : 0;
-        const tdQualEl = tr.querySelector('td[data-label="Qualità"]');
-        const tdQualText = tdQualEl ? (tdQualEl.textContent || '').replace(',', '.').trim() : '';
-        const tdQual = tdQualText !== '' ? (parseFloat(tdQualText) || 0) : 0;
         
         const evInizio = tr.dataset.inizio;
         const evFine = tr.dataset.fine;
@@ -25921,11 +25907,11 @@ function filtraEventi() {
             if (tipo !== 'tutti' && tdTipo !== tipo) show = false;
             if (cerca && !evCerca.includes(cerca)) show = false;
         } else {
-            // Non visualizzare gli eventi contenuti nella lista NOSHOW
-            if (isNoshow) show = false;
+            // Filtro SI-NI (default)
+            // Visualizza tutti gli eventi con campo SI attivo, con campo NI attivo o con i tre campi SI, NI e NO disattivi
+            const matchSiNi = isSi || isNi || (!isSi && !isNi && !isNoshow);
+            if (!matchSiNi) show = false;
             if (tipo !== 'tutti' && tdTipo !== tipo) show = false;
-            if (!isNaN(allMin) && tdAll < allMin) show = false;
-            if (tdQual < qualMin) show = false;
             if (dInizio && evFine < dInizio) show = false;
             if (dFine && evInizio > dFine) show = false;
             if (cerca && !evCerca.includes(cerca)) show = false;
@@ -25936,22 +25922,37 @@ function filtraEventi() {
 }
 
 document.querySelectorAll(
-  '#filterTipo, #filterAllineamento, #filterQualita, #filterSi, #filterNo, #filterDataInizio, #filterGiorni, #filterCerca'
+  '#filterTipo, #filterSiNi, #filterSi, #filterNo, #filterDataInizio, #filterGiorni, #filterCerca, input[name="filterPref"]'
 ).forEach(el => {
     el.addEventListener('input', filtraEventi);
     el.addEventListener('change', filtraEventi);
 });
 
+const filterSiNiEl = document.getElementById('filterSiNi');
 const filterSiEl = document.getElementById('filterSi');
 const filterNoEl = document.getElementById('filterNo');
 if (filterSiEl) {
     filterSiEl.addEventListener('change', () => {
-        if (filterSiEl.checked && filterNoEl) filterNoEl.checked = false;
+        if (filterSiEl.checked) {
+            if (filterNoEl) filterNoEl.checked = false;
+            if (filterSiNiEl) filterSiNiEl.checked = false;
+        }
     });
 }
 if (filterNoEl) {
     filterNoEl.addEventListener('change', () => {
-        if (filterNoEl.checked && filterSiEl) filterSiEl.checked = false;
+        if (filterNoEl.checked) {
+            if (filterSiEl) filterSiEl.checked = false;
+            if (filterSiNiEl) filterSiNiEl.checked = false;
+        }
+    });
+}
+if (filterSiNiEl) {
+    filterSiNiEl.addEventListener('change', () => {
+        if (filterSiNiEl.checked) {
+            if (filterSiEl) filterSiEl.checked = false;
+            if (filterNoEl) filterNoEl.checked = false;
+        }
     });
 }
 
